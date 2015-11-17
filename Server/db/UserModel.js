@@ -1,10 +1,19 @@
 var mongoose = require('mongoose');
 
-var usesrSchema = new.mongoose.Schema({
-  username: String,
-  email: String,
-  password: String,
-  googlelogin: String
+var userSchema = new.mongoose.Schema({
+  local            : {
+    email        : String,
+    password     : String,
+  },
+  google           : {
+    id           : String,
+    token        : String,
+    email        : String,
+    name         : String
+  },
+
+  shoppingList: String,
+  recipeCollection: Array // array of recipe names
 })
 
 

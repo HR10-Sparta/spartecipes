@@ -1,1 +1,1 @@
-recipeController.js
+var Recipe = require('./recipeModel.js');

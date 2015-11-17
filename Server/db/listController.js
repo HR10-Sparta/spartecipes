@@ -1,1 +1,1 @@
-listController.js
+var List = require('./listModel.js');
