@@ -1,14 +1,23 @@
-var morgan = require('morgan'),
-		bodyParser = require('body-parser'),
-		helpers = require('./helpers');
+  var morgan       = require('morgan');
+  var bodyParser   = require('body-parser');
+  var passport     = require('passport');
+  var flash        = require('connect-flash');
+  var morgan       = require('morgan');
+  var cookieParser = require('cookieParser');
+  var session      = require('express-session'); 
+  var helpers      = require('./helpers');
 
 module.exports = function(app, express){
 
 	/**
 	 * Set up Routers
-	 * @type {[type]}
 	 */
 	var userRouter = express.Router();
+
+  /**
+   * Set up Passport
+   */
+  require('./passport')(passport);
 
 	/**
 	 * Set Up Middleware
@@ -16,6 +25,16 @@ module.exports = function(app, express){
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+  app.use(cookieParser());
+  app.use(bodyParser());
+
+  /**
+   * Set up Passport Auth dependencies
+   */
+  app.use(session({secret: 'thisissparta'}));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
 
   /**
    * Serve up Static Files
@@ -26,6 +45,11 @@ module.exports = function(app, express){
    * Funnel all '/api/users' requests to the userRouter
    */
   app.use('/api/users', userRouter);
+  
+  /**
+   * Set up userRouter
+   */
+  require('../db/userRouter.js')(userRouter);
 
   /**
    * Set up Error Handling
@@ -33,10 +57,6 @@ module.exports = function(app, express){
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
-  /**
-   * Set up userRouter
-   */
-  require('../db/userRouter.js')(userRouter);
 };
 
 
