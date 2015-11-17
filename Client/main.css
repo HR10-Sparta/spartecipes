@@ -1,1 +1,101 @@
-main.css
+
+/*====================================
+=            Navigation              =
+====================================*/
+
+/*====================================
+=            Search Bar              =
+====================================*/
+#search {
+  display: none;
+ position: fixed;
+  background-color: rgba(40, 40, 40, 0.7);
+  width: 100%;
+  height: 100%;
+}
+
+#searchform {
+  margin-top: 200px;
+  width: 700px;
+  margin: 0 auto;
+  font-size: 3em;
+}
+
+#label {
+  color: white;
+}
+
+#searchtext {
+  margin: 0 auto;
+  width: 700px;
+  background: transparent;
+  border: none;
+  color: #FFF;
+  font-family: inherit;
+  font-size: 2em;
+}
+
+#searchtext:focus {
+  outline: none;
+}
+
+
+
+
+
+/*====================================
+=            Video Header            =
+====================================*/
+
+#header {
+  background: transparent !important;
+  overflow: hidden;
+  margin-bottom: -18px;
+}
+
+#video-big {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -999;
+  margin-top: -100px;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #video-big {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  #video-big {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+.header-container {
+  height: 450px;
+  text-align: center;
+}
+
+.header-container > h1 {
+  font-color: #FFFFFF;
+}
+
+/*======================================
+=            Content Area 1            =
+======================================*/
+
+.content-one {
+  background-color: #F8F8F8;
+  border-color: #F7F7F7;
+  height: 500px;
+  width: 100%;
+  opacity: 0;
+  font-color: black;
+  color: black;
+}
