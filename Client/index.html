@@ -4,11 +4,18 @@
   <title>Recipes, Shopping List | by Spartecipes</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<div ng-controller="HeaderController"></div>
+<div ng-controller="HeaderController">
+  <div id="search">
+    <form id="searchform">
+      <label id="label" for="searchtext">search: </label>
+      <input id="searchtext" name="searchtext" type="text" />
+    </form>
+  </div>
   <header id="header">
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -45,20 +52,21 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    <iframe id="video-big" width="100%" height="100%" src="https://www.youtube.com/embed/Uj49PA8-L1E?rel=0&amp;loop=1&amp;playlist=Ib_qEZBzGV4&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0" frameborder="0" allowfullscreen></iframe>
+    <iframe id="video-big" width="100%" height="100%" src="https://www.youtube.com/embed/Uj49PA8-L1E?rel=0&amp;loop=1&amp;playlist=Uj49PA8-L1E&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;controls=0" frameborder="0" allowfullscreen></iframe>
     <div class="page-header">
       <h1 class="header-container">Welcome to Spartecipes <br> <small>"this is where we hold them!"</small></h1>
     </div>
   </header>
 </div>
-<div class="container">
-  <div class="content-one">
+<div class="jumbotron">
+  <div class="container content-one">
     Test Options
   </div>
 </div>
 
 
 <ui-view></ui-view>
-
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  <script src="search.js"></script>
 </body>
 </html>
