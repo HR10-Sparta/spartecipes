@@ -106,9 +106,9 @@ module.exports = function(passport) {
 
   passport.use(new GoogleStrategy({
       // TODO --> Add in Auth info
-      clientID: configAuth.googleAuth.clientID,
-      clientSecret: configAuth.googleAuth.clientSecret,
-      callbackURL: configAuth.googleAuth.callbackURL,
+      clientID: 'configAuth.googleAuth.clientID',
+      clientSecret: 'configAuth.googleAuth.clientSecret',
+      callbackURL: 'configAuth.googleAuth.callbackURL',
     },
     function(token, refreshToken, profile, done) {
       // try to find the user based on their google id

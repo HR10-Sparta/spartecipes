@@ -7,19 +7,19 @@ module.exports = function(grunt) {
       options: {
         // Ignore any global vars, jquery etc.
         globals: {
-          
+
         }
       }
     },
 
     // Remove all files from the dist folder
-    clean :['dist/**/*'],
+    clean: ['dist/**/*'],
 
     concat: {
       options: {
         separator: ';'
       },
-      dist: { 
+      dist: {
         files: {
           // Concat all js files in client
           'dist/scripts/app.js': ['client/**/*.js'],
@@ -57,9 +57,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-
+  grunt.loadNpmTasks('grunt-nodemon');
   // Register Grunt Tasks
-  
+
   // Runs jshint, concats and minifies js and css to dist folder. 
   grunt.registerTask('build', [
     'jshint',

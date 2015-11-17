@@ -4,7 +4,7 @@
   "description": "Search for recipes and quickly create a shopping list for all the ingredients you need.",
   "main": "Gruntfile.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,12 +18,13 @@
   "homepage": "https://github.com/HR10-Sparta/spartecipes",
 
   "devDependencies": {
-    "grunt-contrib-jshint": "^0.11.3",
-    "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-clean": "^0.7.0",
-    "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-uglify": "^0.10.1"
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.10.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express-server": "^0.5.1"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
