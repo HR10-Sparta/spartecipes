@@ -1,10 +1,12 @@
-var express = require('express');
+var express  = require('express');
+var mongoose = require('mongoose');
 
 var app = express();
 
 var port = process.env.PORT || 8000;
 
 // mongoose connection?
+mongoose.connect('mongodb://localhost/spartans');
 
 /**
  * Set up Middleware
