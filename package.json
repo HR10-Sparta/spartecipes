@@ -18,12 +18,7 @@
   "homepage": "https://github.com/HR10-Sparta/spartecipes",
   "devDependencies": {
     "grunt-contrib-jshint": "^0.11.3",
-    "grunt-contrib-watch": "^0.6.1"
-  },
-  "dependencies": {
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "morgan": "^1.6.1",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-clean": "^0.7.0",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-concat": "^0.5.1",
@@ -31,5 +26,10 @@
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-uglify": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
   }
 }
