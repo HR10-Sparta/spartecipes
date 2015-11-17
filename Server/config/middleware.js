@@ -3,7 +3,7 @@
   var passport     = require('passport');
   var flash        = require('connect-flash');
   var morgan       = require('morgan');
-  var cookieParser = require('cookieParser');
+  var cookieParser = require('cookie-parser');
   var session      = require('express-session'); 
   var helpers      = require('./helpers');
 
@@ -47,16 +47,15 @@ module.exports = function(app, express){
   app.use('/api/users', userRouter);
   
   /**
-   * Set up userRouter
-   */
-  require('../db/userRouter.js')(userRouter);
-
-  /**
    * Set up Error Handling
    */
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
+  /**
+   * Set up userRouter
+   */
+  require('../db/userRouter.js')(userRouter);
 };
 
 

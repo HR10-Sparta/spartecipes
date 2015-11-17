@@ -1,12 +1,13 @@
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var configAuth = require('./auth');
 
 // TODO --> Add user db model
-var User = require('./db/userModel.js');
+var User = require('../db/userModel.js');
 
 module.exports = function(passport) {
 
-  passport.serializeUser(funciton(user, done) {
+  passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
 
@@ -139,7 +140,7 @@ module.exports = function(passport) {
               return done(null, newUser);
             });
 
-          });
+          }
       });
 
   }));
