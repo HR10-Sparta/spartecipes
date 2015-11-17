@@ -69,6 +69,16 @@ module.exports = function(grunt) {
     'cssmin',
   ]);
 
+  // Grunt Task
   grunt.registerTask('default', ['build', 'watch']);
+
+  // Register tasks for buildpack on heroku deploy
+  // https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt
+  // Change ENV vars: heroku config:set NODE_ENV=production
+
+  // Development Tasks
+  grunt.registerTask('heroku:development', ['build']);
+  // Production Tasks
+  grunt.registerTask('heroku:production', ['build']);
 
 };
