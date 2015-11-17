@@ -6,8 +6,10 @@ var port = process.env.PORT || 8000;
 
 // mongoose connection?
 
-// Set up all the middleware
-require('./utils/middleware.js')(app, express);
+/**
+ * Set up Middleware
+ */
+require('./config/middleware.js')(app, express);
 
 app.listen(port);
 
