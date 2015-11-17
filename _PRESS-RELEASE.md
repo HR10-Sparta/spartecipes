@@ -17,28 +17,26 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
     Spartecipes
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
    Anyone looking to simplify the process of managing their online recipes and shopping list.
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+    Spartecpies allows users to search for recipes online.  It gives users the abilty to search for recipes based off a number of a qualifiers (i.e. chicken, high-protein, vegan) which it then returns.  The user can then choose which recipes to add to their shopping list where all of the ingredients will be aggregated.    
 
 ## Problem ##
-  > Describe the problem your product solves.
+  Spartecipes looks to solve the problem of managing a shopping list that is based off multiple recipes found online.  Many different tabs, many different lists, and a separate file to keep track of everything.   
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  Whereas before it was a hassle to tally up the ingredients and keep track of everything Spartecipes streamlines the process for the user.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > Look for the Spartecipes, the simple Spartecipes, forget about your worries and your strife. I mean the Spartecipes, old Mother Nature's recipes, that brings the bare necessities of life.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Simply search for a recipe, you can either be very specific with your search or leave it vague.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > This changed my life.  
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Check us out.  We've got a great search engine with tons of recipes.  Allow us to make searching and using online recipes easier for you.
