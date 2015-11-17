@@ -1,0 +1,19 @@
+{
+  "name": "spartecipes",
+  "version": "1.0.0",
+  "description": "Search for recipes and quickly create a shopping list for all the ingredients you need.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HR10-Sparta/spartecipes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HR10-Sparta/spartecipes/issues"
+  },
+  "homepage": "https://github.com/HR10-Sparta/spartecipes"
+}
