@@ -23,8 +23,6 @@ module.exports = function(grunt) {
         files: {
           // Concat all js files in client
           'dist/scripts/app.js': ['client/**/*.js'],
-          // Concat all js files in server
-          'dist/scripts/server.js': ['server/**/*.js']
         }
       }
     },
@@ -34,7 +32,6 @@ module.exports = function(grunt) {
         files: {
           // Minify concatenated files
           'dist/scripts/app.min.js': ['dist/scripts/app.js'],
-          'dist/scripts/server.min.js': ['dist/scripts/server.js']
         }
       }
     },
