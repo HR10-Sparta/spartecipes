@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // var root = new Firebase("https://.....firbaseio.com");
 // var recipeRef = new Firebase("https://.....firbaseio.com/recipes");
 // var userRef = new Firebase("https://.....firbaseio.com/users");
@@ -19,3 +20,9 @@ db.on('error', console.error.bind(console, 'Connection error: unable to establis
 db.on('diconnected', mongoose.connect);
 
 module.exports = db;
+=======
+var root = new Firebase("https://.....firbaseio.com");
+var recipeRef = new Firebase("https://.....firbaseio.com/recipes");
+var userRef = new Firebase("https://.....firbaseio.com/users");
+var listRef = new Firebase("https://.....firbaseio.com/lists");
+>>>>>>> 85f376446dc3d2367f84ac574c5f6fe5b37985f9

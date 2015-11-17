@@ -16,7 +16,11 @@
     "url": "https://github.com/HR10-Sparta/spartecipes/issues"
   },
   "homepage": "https://github.com/HR10-Sparta/spartecipes",
+<<<<<<< HEAD
 
+=======
+<<<<<<< cfcc21e27f65cb79cdb60bac9b2cf10ed8c13697
+>>>>>>> 85f376446dc3d2367f84ac574c5f6fe5b37985f9
   "devDependencies": {
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-watch": "^0.6.1",
@@ -29,8 +33,16 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "grunt": "^0.4.5",
+<<<<<<< HEAD
     "morgan": "^1.6.1",
     "mongoose": "^4.2.6"
 
+=======
+    "morgan": "^1.6.1"
+=======
+  "dependencies": {
+    "mongoose": "^4.2.6"
+>>>>>>> Server Models and Controllers added for List and Recipe
+>>>>>>> 85f376446dc3d2367f84ac574c5f6fe5b37985f9
   }
 }

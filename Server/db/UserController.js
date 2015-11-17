@@ -1,6 +1,7 @@
 var User = require('./userModel.js');
 
 //return an array of all User profiles as JSON objects
+<<<<<<< HEAD
 exports.getAllUsers = function(callback){
   User.find({}, function(err, users) {
     if (err) {
@@ -58,5 +59,19 @@ exports.addUser = function(data, callback){
       callback();
     }
   });
+=======
+exports.getAllUsers = function(callback){};
+>>>>>>> 85f376446dc3d2367f84ac574c5f6fe5b37985f9
 
+
+//finds a specific user profile
+exports.getUser = function(user, callback){};
+
+exports.addUser = function(data, callback){
+  var user = new User({
+    username: data.username, 
+    email: data.email,
+    password: data.password,
+    googlelogin: data.googlelogin
+  })
 };
