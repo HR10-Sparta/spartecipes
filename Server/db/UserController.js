@@ -1,6 +1,7 @@
 var User = require('./userModel.js');
 
 //return an array of all User profiles as JSON objects
+
 exports.getAllUsers = function(callback){
   User.find({}, function(err, users) {
     if (err) {
@@ -58,5 +59,8 @@ exports.addUser = function(data, callback){
       callback();
     }
   });
+
+
+exports.getAllUsers = function(callback){};
 
 };

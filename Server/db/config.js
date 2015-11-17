@@ -1,7 +1,4 @@
-// var root = new Firebase("https://.....firbaseio.com");
-// var recipeRef = new Firebase("https://.....firbaseio.com/recipes");
-// var userRef = new Firebase("https://.....firbaseio.com/users");
-// var listRef = new Firebase("https://.....firbaseio.com/lists");
+
 
 var mongoose = require('mongoose');
 
@@ -19,3 +16,4 @@ db.on('error', console.error.bind(console, 'Connection error: unable to establis
 db.on('diconnected', mongoose.connect);
 
 module.exports = db;
+
