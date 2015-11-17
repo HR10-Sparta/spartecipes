@@ -6,4 +6,4 @@ var recipeSchema = new.mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Recipe', userSchema);
+module.exports = mongoose.model('Recipe', recipeSchema);
