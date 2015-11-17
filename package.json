@@ -4,7 +4,7 @@
   "description": "Search for recipes and quickly create a shopping list for all the ingredients you need.",
   "main": "Gruntfile.js",
   "scripts": {
-    "test": "test"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
