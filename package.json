@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/HR10-Sparta/spartecipes/issues"
   },
-  "homepage": "https://github.com/HR10-Sparta/spartecipes"
+  "homepage": "https://github.com/HR10-Sparta/spartecipes",
+  "devDependencies": {
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.14.0"
+  }
 }
