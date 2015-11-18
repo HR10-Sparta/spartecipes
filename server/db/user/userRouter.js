@@ -11,9 +11,9 @@ module.exports = function(app, passport) {
 
   app.route('/recipes')
     .post(function(req, res, next){
-      UserController.addRecipe({user: req.body.user, recipe: req.body.recipe}, function(err, res){
+      UserController.addRecipe({user: req.body.user, recipe: req.body.list}, function(err, res){
         if (err){
-          console.error('Unable to add recipe');
+          console.error('Unable to update Shopping List');
         }
       });
     });

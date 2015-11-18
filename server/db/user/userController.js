@@ -111,8 +111,9 @@ exports.addRecipe = function(data, callback){
       imageURL: data.recipe.ImageURL,
       body: data.recipe
     });
+     User.update({'local.email' : profile.local.email}, {$set: {'profile.shoppingList': data.list } });
     // $push the recipe to their shopping list
-    User.update({'local.email' : profile.local.email}, {$push: {'shoppingList': recipe} });
+    // User.update({'local.email' : profile.local.email}, {$push: {'shoppingList': recipe} });
   });
 };
 
