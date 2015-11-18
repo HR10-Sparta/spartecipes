@@ -10,10 +10,10 @@ var module =angular.module('recipe.services', [])
     .then(function(resp){
       return resp.data.Results;
     });
-  }
+  };
   return {
     getRecipes: getRecipes
-  }
+  };
 
 })
 
@@ -22,11 +22,11 @@ var module =angular.module('recipe.services', [])
 
   var addToList = function(recipe){
     list.push(recipe);
-  }
+  };
 
   return {
     list: list,
     addToList: addToList
-  }
+  };
 
-})
+});
