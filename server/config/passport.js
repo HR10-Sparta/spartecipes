@@ -1,6 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-//var configAuth = require('./auth');
+var configAuth = require('./auth');
 
 // TODO --> Add user db model
 var User = require('../db/user/userModel.js');
@@ -12,12 +12,10 @@ module.exports = function(passport) {
   });
 
   passport.deserializeUser(function(id, done) {
-
     User.findById(id, function(err, user) {
       done(err, user);
     });
   });
-
 
 
   /**
@@ -27,13 +25,14 @@ module.exports = function(passport) {
   passport.use('local-signup', new LocalStrategy({
     // Can overwrite default names for the username and password
     // ex. usernameField: 'email' to check user by email
-    usernameField: 'username',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-  }, function(req, username, password, done) {
+
+  }, function(req, email, password, done) {
 
     User.findOne({
-      'username': username
+      'local.email': email
     }, function(err, user) {
       if (err) {
         return done(err);
@@ -41,14 +40,14 @@ module.exports = function(passport) {
 
       // If user already exists
       if (user) {
-        return done(null, false, req.flash('signupMessage', 'That username is already taken!'));
+        return done(null, false, 'That email is already taken!');
       } else {
         // Create and save new user
         var newUser = new User();
 
-        newUser.username = username;
+        newUser.local.email = email;
         // TODO --> Add generateHash function to User model
-        newUser.password = newUser.generateHash(password);
+        newUser.local.password = newUser.generateHash(password);
 
         newUser.save(function(err) {
           if (err) {
@@ -70,15 +69,16 @@ module.exports = function(passport) {
   passport.use('local-login', new LocalStrategy({
     // Can overwrite default names for the username and password
     // ex. usernameField: 'email' to check user by email
-    usernameField: 'username',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-  }, function(req, username, password, done) {
+
+  }, function(req, email, password, done) {
     // find a user whose email is the same as the forms email
     // we are checking to see if the user trying to login already exists
     // TODO --> Resolve with DB
     User.findOne({
-      'username': username
+      'local.email': email
     }, function(err, user) {
       // if there are any errors, return the error before anything else
       if (err)
@@ -86,12 +86,12 @@ module.exports = function(passport) {
 
       // if no user is found, return the message
       if (!user)
-        return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+        return done(null, false, 'User not found'); // req.flash is the way to set flashdata using connect-flash
 
       // if the user is found but the password is wrong
       // TODO --> Add validPassword method to user model
       if (!user.validPassword(password))
-        return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+        return done(null, false, 'Wrong Password'); // create the loginMessage and save it to session as flashdata
 
       // all is well, return successful user
       return done(null, user);
@@ -106,44 +106,45 @@ module.exports = function(passport) {
 
   passport.use(new GoogleStrategy({
       // TODO --> Add in Auth info
-      clientID: 'configAuth.googleAuth.clientID',
-      clientSecret: 'configAuth.googleAuth.clientSecret',
-      callbackURL: 'configAuth.googleAuth.callbackURL',
+      clientID: configAuth.googleAuth.clientID,
+      clientSecret: configAuth.googleAuth.clientSecret,
+      callbackURL: configAuth.googleAuth.callbackURL,
+
     },
     function(token, refreshToken, profile, done) {
       // try to find the user based on their google id
       User.findOne({
-          'google.id': profile.id
-        }, function(err, user) {
-          if (err)
-            return done(err);
+        'google.id': profile.id
+      }, function(err, user) {
+        
+        if (err)
+          return done(err);
 
-          if (user) {
+        if (user) {
 
-            // if a user is found, log them in
-            return done(null, user);
-          } else {
-            // if user is not in the DB, add a new user
-            var newUser = new User();
+          // if a user is found, log them in
+          return done(null, user);
+        } else {
+          // if user is not in the DB, add a new user
+          var newUser = new User();
 
-            // set all user info
-            // TODO --> Resolve with DB
-            newUser.google.id = profile.id;
-            newUser.google.token = token;
-            newUser.google.name = profile.displayName;
-            newUser.google.email = profile.emails[0].value; // pull the first email
+          // set all user info
+          // TODO --> Resolve with DB
+          newUser.google.id = profile.id;
+          newUser.google.token = token;
+          newUser.google.name = profile.displayName;
+          newUser.google.email = profile.emails[0].value; // pull the first email
 
-            // save the user
-            newUser.save(function(err) {
-              if (err)
-                throw err;
-              return done(null, newUser);
-            });
-
-          }
+          console.log(newUser);
+          // save the user
+          newUser.save(function(err) {
+            if (err)
+              throw err;
+            return done(null, newUser);
+          });
+        }
       });
-
-  }));
+    }));
 
 
 
