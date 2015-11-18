@@ -26,10 +26,17 @@ $(document).ready(function() {
   var $search = $('#search');
   var $searchtext = $('#searchtext');
   // on any keydown, start parsing keyboard input
+  var str = "";
   $(document).keydown(function(e) {
+    str += e;
     if ($search.is(':visible')) {
       switch (e.which) {
         case KEYCODE_ESC:
+          $search.fadeOut(200);
+          $searchtext.blur().hide();
+          break;
+        case 13:
+          angular.element(document.getElementById('HeaderController')).scope().retrieveRecipes($searchtext.val());
           $search.fadeOut(200);
           $searchtext.blur().hide();
           break;
