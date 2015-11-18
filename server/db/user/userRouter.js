@@ -81,6 +81,16 @@ module.exports = function(app, passport) {
             status: 'you are in bro'
           });
         }
+        console.log(user);
       })(req, res, next);
+    });
+
+  app.route('/logout')
+    .get(function(req, res, next) {
+      req.logout();
+      res.status(200).json({
+        status: 'bye'
+      });
+      console.log(req.user);
     });
 };
