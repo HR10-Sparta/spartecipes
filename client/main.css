@@ -95,7 +95,19 @@
   border-color: #F7F7F7;
   height: 500px;
   width: 100%;
-  opacity: 0;
   font-color: black;
   color: black;
+}
+
+.list {
+  float: left;
+  border: 5px;
+  border-color: 5px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.picture {
+  height: 50px;
+  width: 100px;
 }
