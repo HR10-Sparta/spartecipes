@@ -1,6 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var configAuth = require('./auth');
+
 
 // TODO --> Add user db model
 var User = require('../db/user/userModel.js');
@@ -106,9 +106,9 @@ module.exports = function(passport) {
 
   passport.use(new GoogleStrategy({
       // TODO --> Add in Auth info
-      clientID: configAuth.googleAuth.clientID,
-      clientSecret: configAuth.googleAuth.clientSecret,
-      callbackURL: configAuth.googleAuth.callbackURL,
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CLIENT_CALLLBACK_URL,
 
     },
     function(token, refreshToken, profile, done) {
