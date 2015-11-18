@@ -10,7 +10,7 @@ var module =angular.module('recipe.services', [])
     .then(function(resp){
       return resp.data.Results;
     });
-  }
+  };
 
   var getSingleRecipe = function(recipeID){
     return $http({
@@ -20,11 +20,11 @@ var module =angular.module('recipe.services', [])
     .then(function(resp){
       return resp.data.Results;
     });
-  }
+  };
   return {
     getRecipes: getRecipes,
     getSingleRecipe: getSingleRecipe
-  }
+  };
 
 })
 
@@ -33,11 +33,11 @@ var module =angular.module('recipe.services', [])
 
   var addToList = function(recipe){
     list.push(recipe);
-  }
+  };
 
   return {
     list: list,
     addToList: addToList
-  }
+  };
 
-})
+});

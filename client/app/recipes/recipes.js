@@ -2,7 +2,7 @@ angular.module('recipes', ['recipe.services'])
 
 .controller('HeaderController', function ($scope, Search) {
   // Your code here
-  $scope.data = {}
+  $scope.data = {};
   //$scope.data.recipes = [];
   angular.extend($scope, Search);
   
@@ -12,7 +12,7 @@ angular.module('recipes', ['recipe.services'])
       $scope.data.recipes = recipes;
       console.log(recipes);
     });
-  }
+  };
 
     
 
@@ -28,19 +28,19 @@ angular.module('recipes', ['recipe.services'])
       cat: cat,
       resolve: {
         items: function () {
-          return $scope.recipe
+          return $scope.recipe;
         }
       }
   });
-}
+};
 })
 .controller('RecipeInstanceCtrl', function ($scope, $uibModalInstance, recipe, ShoppingList) {
 
-  $scope.recipe = recipe
+  $scope.recipe = recipe;
 
   $scope.no = function(){
     $uibModalInstance.close();
-  }
+  };
 
   $scope.ok = function () {
     $uibModalInstance.close();
