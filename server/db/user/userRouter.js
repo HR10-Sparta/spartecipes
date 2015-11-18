@@ -13,9 +13,9 @@ module.exports = function(app, passport) {
     .post(function(req, res, next){
       UserController.addRecipe({user: req.body.user, recipe: req.body.recipe}, function(err, res){
         if (err){
-          console.error('Unable to add recipe')
+          console.error('Unable to add recipe');
         }
-      })
+      });
     });
 
 
