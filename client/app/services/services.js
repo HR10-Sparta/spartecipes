@@ -11,7 +11,7 @@ var module =angular.module('recipe.services', [])
     .then(function(resp){
       return resp.data.Results;
     });
-  }
+  };
   //grabs a single recipe
   var getSingleRecipe = function(recipeID){
     return $http({
@@ -21,12 +21,12 @@ var module =angular.module('recipe.services', [])
     .then(function(resp){
       return resp.data;
     });
-  }
+  };
   return {
     currentRecipe: currentRecipe,
     getRecipes: getRecipes,
     getSingleRecipe: getSingleRecipe
-  }
+  };
 
 })
 
@@ -36,11 +36,11 @@ var module =angular.module('recipe.services', [])
   var addToList = function(recipe){
     list.push(recipe);
     console.log(list);
-  }
+  };
 
   return {
     list: list,
     addToList: addToList
-  }
+  };
 
-})
+});
