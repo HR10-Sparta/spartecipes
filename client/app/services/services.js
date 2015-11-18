@@ -5,7 +5,17 @@ var module =angular.module('recipe.services', [])
   var getRecipes = function(searchCriteria){
     return $http({
       method:'GET',
-      url: "http://api.bigoven.com/recipes?title_kw=oysters&pg=1&rpp=20&api_key=8hUGXs4S34zTaDWaG1CMMmjfB9I3M944"
+      url: "http://api.bigoven.com/recipes?any_kw=" + searchCriteria + "&pg=1&rpp=100&api_key=8hUGXs4S34zTaDWaG1CMMmjfB9I3M944"
+    })
+    .then(function(resp){
+      return resp.data.Results;
+    });
+  }
+
+  var getSingleRecipe = function(recipeID){
+    return $http({
+      method:'GET',
+      url: "http://api.bigoven.com/recipes?any_kw=" + searchCriteria + "&pg=1&rpp=100&api_key=8hUGXs4S34zTaDWaG1CMMmjfB9I3M944"
     })
     .then(function(resp){
       return resp.data.Results;
