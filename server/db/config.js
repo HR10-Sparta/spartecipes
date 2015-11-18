@@ -1,5 +1,3 @@
-
-
 var mongoose = require('mongoose');
 
 // sets db location to Heroku Mongolab uri or local host
