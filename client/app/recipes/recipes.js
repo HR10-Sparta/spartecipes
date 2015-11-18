@@ -1,51 +1,45 @@
-angular.module('recipes', ['recipe.services'])
+angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
 
-.controller('HeaderController', function($scope, Search) {
-    // Your code here
-    $scope.data = {};
-    //$scope.data.recipes = [];
-    angular.extend($scope, Search);
+.controller('HeaderController', function ($scope, Search, $uibModal) {
+  // Your code here
+  $scope.data = {};
+  angular.extend($scope, Search);
+  
+  $scope.retrieveRecipes = function (data) {
+    Search.getRecipes(data).then(function (recipes) {
+      $scope.data.recipes = recipes;
+    });
+  };
 
-    $scope.retrieveRecipes = function(data) {
-      console.log("hello there");
-      Search.getRecipes(data).then(function(recipes) {
-        $scope.data.recipes = recipes;
-        console.log(recipes);
-      });
-    };
-
-
-
-    //Search.getRecipes('stuff', $scope.displayData);
-
-    $scope.open = function(recipe) {
-      $scope.recipe = recipe;
+  $scope.open = function (recipeID) {
+    Search.getSingleRecipe(recipeID).then(function (recipe){
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'RecipeContent.html',
         controller: 'RecipeInstanceCtrl',
-        task: task,
-        cat: cat,
         resolve: {
-          items: function() {
-            return $scope.recipe;
+          item: function () {
+            return recipe;
           }
         }
       });
-    };
-  })
-  .controller('RecipeInstanceCtrl', function($scope, $uibModalInstance, recipe, ShoppingList) {
+     });
+  };
+})
+.controller('RecipeInstanceCtrl', function ($scope, $uibModalInstance, Search, item, ShoppingList) {
 
-    $scope.recipe = recipe;
+   angular.extend($scope, Search);
+   $scope.currentRecipe = item;
+   console.log($scope.currentRecipe);
 
-    $scope.no = function() {
-      $uibModalInstance.close();
-    };
+   $scope.no = function(){
+     $uibModalInstance.close();
+   };
 
-    $scope.ok = function() {
-      $uibModalInstance.close();
-      ShoppingList.addToList(recipe);
+  $scope.ok = function () {
+    $uibModalInstance.close();
+    ShoppingList.addToList(item);
+    
+  };
 
-    };
-
-  });
+});
