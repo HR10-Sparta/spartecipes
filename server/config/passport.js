@@ -1,6 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-//var configAuth = require('./auth');
+var configAuth = require('./auth');
 
 // TODO --> Add user db model
 var User = require('../db/user/userModel.js');
@@ -106,15 +106,17 @@ module.exports = function(passport) {
 
   passport.use(new GoogleStrategy({
       // TODO --> Add in Auth info
-      clientID: 'configAuth.googleAuth.clientID',
-      clientSecret: 'configAuth.googleAuth.clientSecret',
-      callbackURL: 'configAuth.googleAuth.callbackURL',
+      clientID: configAuth.googleAuth.clientID,
+      clientSecret: configAuth.googleAuth.clientSecret,
+      callbackURL: configAuth.googleAuth.callbackURL,
+
     },
     function(token, refreshToken, profile, done) {
       // try to find the user based on their google id
       User.findOne({
         'google.id': profile.id
       }, function(err, user) {
+        
         if (err)
           return done(err);
 
@@ -133,16 +135,15 @@ module.exports = function(passport) {
           newUser.google.name = profile.displayName;
           newUser.google.email = profile.emails[0].value; // pull the first email
 
+          console.log(newUser);
           // save the user
           newUser.save(function(err) {
             if (err)
               throw err;
             return done(null, newUser);
           });
-
         }
       });
-
     }));
 
 

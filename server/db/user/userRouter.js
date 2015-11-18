@@ -59,4 +59,28 @@ module.exports = function(app, passport) {
       })(req, res, next);
     });
 
+  app.get('/auth/google', passport.authenticate('google', {
+    scope: ['profile', 'email']
+  }));
+
+  app.route('/auth/google/callback')
+    .get(function(req, res, next) {
+      passport.authenticate('google', function(err, user, info) {
+        if (err) {
+          return res.status(500).json({
+            err: err
+          });
+        }
+        if (!user) {
+          return res.status(401).json({
+            err: info
+          });
+        }
+        if (user) {
+          res.status(200).json({
+            status: 'you are in bro'
+          });
+        }
+      })(req, res, next);
+    });
 };
