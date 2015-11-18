@@ -38,6 +38,24 @@ exports.findUser = function(user, callback){
 
 
 exports.addUser = function(data, callback){
+    // ============
+    // Params
+    // ============
+    // googleInfo
+    // - id
+    // - token
+    // - email
+    // - name
+    //
+    // new user -> google_id, name, email
+    //=============
+    // localInfo
+    // -username
+    // -email
+    // -password
+    // new user -> username, email, passord
+    //===============
+
   var user = new User({
 
    local:            {
@@ -70,10 +88,24 @@ exports.addUser = function(data, callback){
 };
 
 exports.addRecipe = function(data, callback){
+   // ============
+    // Params
+    // ============
+    // 
+    // - 
+    // - 
+    // - 
+    // - 
+    //
+    // 
+    //=============
+
  findUser(data.user, function(profile){
     var recipe = new Recipe({
-      name: data.name,// access recipe name; 
-      href: data.url // access recipe url;
+      title: data.title,// access recipe name; 
+      href: data.WebURL, // access recipe url;
+      ingredients: data.Ingredients,
+      imageURL: data.ImageURL
     });
     // $push the recipe to their shopping list
     User.update({'local.email' : profile.local.email}, {$push: {'shoppingList': recipe} });
@@ -82,7 +114,8 @@ exports.addRecipe = function(data, callback){
 
 exports.removeRecipe = function(data, callback){
   findUser(data.user, function(profile){
-    User.update({'local.email': profile.local.email}, {$pull: {'profile.shoppingList': { name: data.recipeName }});
+    User.update({'local.email': profile.local.email}, {$pull: {'profile.shoppingList': { name: data.recipeName }} } );
+  
   });
 };
 
