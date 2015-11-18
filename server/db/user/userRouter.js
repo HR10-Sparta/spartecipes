@@ -1,4 +1,5 @@
 var User = require('./userModel');
+var UserController = require('./userController');
 
 /**
  * Routes for User Models on the DB
@@ -7,6 +8,16 @@ var User = require('./userModel');
  * All Passport Strategies are in server/config/passport.js
  */
 module.exports = function(app, passport) {
+
+  app.route('/recipes')
+    .post(function(req, res, next){
+      UserController.updateShoppingList({user: req.body.user, recipe: req.body.list}, function(err, res){
+        if (err){
+          console.error('Unable to update Shopping List');
+        }
+      });
+    });
+
 
   // Handles Registration for a new user using passport local strategy
   // Successful registration sends back DB user object into authenticate callback function
