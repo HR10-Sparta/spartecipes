@@ -55,7 +55,7 @@ module.exports = function(app, express){
   /**
    * Set up userRouter
    */
-  require('../db/userRouter.js')(userRouter);
+  require('../db/userRouter.js')(userRouter, passport);
 };
 
 

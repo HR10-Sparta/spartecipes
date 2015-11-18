@@ -1,6 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var configAuth = require('./auth');
+//var configAuth = require('./auth');
 
 // TODO --> Add user db model
 var User = require('../db/userModel.js');
