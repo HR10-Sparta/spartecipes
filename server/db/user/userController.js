@@ -33,15 +33,16 @@ exports.findUser = function(user, callback){
 exports.addUser = function(data, callback){
   var user = new User({
 
-   local            : {
-      email        : data.email,
-      password     : data.password,
+   local:            {
+      username: data.username,
+      email: data.email,
+      password: data.password
     },
-    google           : {
-      id           : data.id,
-      token        : data.token,
-      email        : data.email,
-      name         : data.name
+    google :         {
+      id : data.id,
+      token : data.token,
+      email : data.email,
+      name : data.name
     },
     username: data.name,
     shoppingList: data.list,
@@ -52,7 +53,7 @@ exports.addUser = function(data, callback){
 
   user.save(function(err){
     if (err){
-      console.error(err);
+      console.error(err, 'Error on save!');
       return;
     } else {
       console.log('user record created');
