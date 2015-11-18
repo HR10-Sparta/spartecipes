@@ -3,10 +3,9 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-var port = process.env.PORT || 8000;
-
 // mongoose connection?
-mongoose.connect('mongodb://localhost/spartans');
+//mongoose.connect('mongodb://localhost/spartans');
+var port = process.env.PORT || 8000;
 
 /**
  * Set up Middleware
@@ -14,5 +13,6 @@ mongoose.connect('mongodb://localhost/spartans');
 require('./config/middleware.js')(app, express);
 
 app.listen(port);
-
 console.log('Making digital magic on port ' + port);
+// Export app for index.js
+module.exports = app;
