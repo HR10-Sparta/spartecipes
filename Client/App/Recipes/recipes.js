@@ -1,17 +1,22 @@
-angular.module('recipes', [])
+angular.module('recipes', ['recipe.services'])
 
-.controller('DisplayController', function ($scope, Search, $uibModal) {
+.controller('HeaderController', function ($scope, Search) {
   // Your code here
   $scope.data = {}
+  //$scope.data.recipes = [];
   angular.extend($scope, Search);
   
-  $scope.getRecipes().then(function(recipes){
-    $scope.data.recipes = recipes;
-    console.log(recipes);
+  $scope.retrieveRecipes = function (data) {
+    console.log("hello there");
+    Search.getRecipes(data).then(function (recipes) {
+      $scope.data.recipes = recipes;
+      console.log(recipes);
     });
-    //need to know format data is coming back in
+  }
 
-  Search.getRecipes('stuff', $scope.displayData);
+    
+
+  //Search.getRecipes('stuff', $scope.displayData);
 
   $scope.open = function (recipe) {
     $scope.recipe = recipe;
