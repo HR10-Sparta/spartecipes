@@ -1,4 +1,5 @@
 var User = require('./userModel.js');
+var Recipe = require('../recipe/recipeModel.js');
 
 //return an array of all User profiles as JSON objects
 
@@ -17,7 +18,13 @@ exports.getAllUsers = function(callback){
 
 //finds a specific user profile
 exports.findUser = function(user, callback){
-  User.findOne({ 'local.email' : user}, function(err, profile){
+  var query =  {};
+  if ( google.id ){
+    query = { 'google.id': user.goggle.id };
+  } else {
+    query = { 'local.email':  user.local.email };
+  }
+  User.findOne(query, function(err, profile){
     if (err) {
       console.error(err);
       return;
@@ -33,15 +40,16 @@ exports.findUser = function(user, callback){
 exports.addUser = function(data, callback){
   var user = new User({
 
-   local            : {
-      email        : data.email,
-      password     : data.password,
+   local:            {
+      username: data.username,
+      email: data.email,
+      password: data.password
     },
-    google           : {
-      id           : data.id,
-      token        : data.token,
-      email        : data.email,
-      name         : data.name
+    google :         {
+      id : data.id,
+      token : data.token,
+      email : data.email,
+      name : data.name
     },
     username: data.name,
     shoppingList: data.list,
@@ -52,7 +60,7 @@ exports.addUser = function(data, callback){
 
   user.save(function(err){
     if (err){
-      console.error(err);
+      console.error(err, 'Error on save!');
       return;
     } else {
       console.log('user record created');
@@ -60,3 +68,22 @@ exports.addUser = function(data, callback){
     }
   });
 };
+
+exports.addRecipe = function(data, callback){
+ findUser(data.user, function(profile){
+    var recipe = new Recipe({
+      name: data.name,// access recipe name; 
+      href: data.url // access recipe url;
+    });
+    // $push the recipe to their shopping list
+    User.update({'local.email' : profile.local.email}, {$push: {'shoppingList': recipe} });
+  });
+};
+
+exports.removeRecipe = function(data, callback){
+  findUser(data.user, function(profile){
+    User.update({'local.email': profile.local.email}, {$pull: {'profile.shoppingList': { name: data.recipeName }});
+  });
+};
+
+
