@@ -121,3 +121,13 @@
   color: white;
   height: 250px;
 }
+
+.head {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.ingredients {
+  padding-left: 30px;
+}
