@@ -20,9 +20,9 @@ exports.getAllUsers = function(callback){
 exports.findUser = function(user, callback){
   var query =  {};
   if ( google.id ){
-    query = { 'google.id': user.goggle.id }
+    query = { 'google.id': user.goggle.id };
   } else {
-    query = { 'local.email':  user.local.email }
+    query = { 'local.email':  user.local.email };
   }
   User.findOne(query, function(err, profile){
     if (err) {
@@ -74,16 +74,16 @@ exports.addRecipe = function(data, callback){
     var recipe = new Recipe({
       name: data.name,// access recipe name; 
       href: data.url // access recipe url;
-    })
+    });
     // $push the recipe to their shopping list
-    User.update({'local.email' : profile.local.email}, {$push: {'shoppingList': recipe} })
+    User.update({'local.email' : profile.local.email}, {$push: {'shoppingList': recipe} });
   });
 };
 
 exports.removeRecipe = function(data, callback){
   findUser(data.user, function(profile){
-    User.update({'local.email': profile.local.email}, {})
-  })
-}
+    // User.update({'local.email': profile.local.email}, {});
+  });
+};
 
 
