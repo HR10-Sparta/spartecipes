@@ -57,7 +57,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-nodemon');
   // Register Grunt Tasks
 
   // Runs jshint, concats and minifies js and css to dist folder. 

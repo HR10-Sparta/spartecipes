@@ -15,7 +15,7 @@ var userSchema = new mongoose.Schema({
 
   shoppingList: Array, // array of ingredient objects?
   recipeCollection: Array // array of recipe names
-})
+});
 
 
 module.exports = mongoose.model('User', userSchema);

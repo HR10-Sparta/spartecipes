@@ -12,12 +12,11 @@ exports.getAllUsers = function(callback){
     callback(users);
   });
 };
-};
 
 
 //finds a specific user profile
 exports.findUser = function(user, callback){
-  User.findOne({local.email : user}, function(err, profile){
+  User.findOne({'local.email' : user}, function(err, profile){
     if (err) {
       console.error(err);
       return;
@@ -26,9 +25,6 @@ exports.findUser = function(user, callback){
     } 
   });
 };
-
-
-
 
 exports.addUser = function(data, callback){
   var user = new User({

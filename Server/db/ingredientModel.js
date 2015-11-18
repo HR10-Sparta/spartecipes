@@ -5,6 +5,6 @@ var ingredientSchema = new mongoose.Schema({
   quantity: String, 
   purchased: Boolean,
   recipes: Array // reference to every recipe name or ID that uses that ingredient
-})
+});
 
 module.exports = mongoose.model('Ingredient', ingredientSchema);
