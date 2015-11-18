@@ -87,7 +87,7 @@ exports.addUser = function(data, callback){
   });
 };
 
-exports.addRecipe = function(data, callback){
+exports.updateShoppingList = function(data, callback){
    // ============
     // Params
     // ============
