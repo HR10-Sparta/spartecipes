@@ -92,8 +92,11 @@ exports.addRecipe = function(data, callback){
     // Params
     // ============
     // 
-    // - 
-    // - 
+    // - data
+    //    -user
+    //      -info
+    //    -recipe
+    //      - all recipe info?
     // - 
     // - 
     //
@@ -102,10 +105,11 @@ exports.addRecipe = function(data, callback){
 
  findUser(data.user, function(profile){
     var recipe = new Recipe({
-      title: data.title,// access recipe name; 
-      href: data.WebURL, // access recipe url;
-      ingredients: data.Ingredients,
-      imageURL: data.ImageURL
+      title: data.recipe.title,
+      href: data.recipe.WebURL, 
+      ingredients: data.recipe.Ingredients,
+      imageURL: data.recipe.ImageURL,
+      body: data.recipe
     });
     // $push the recipe to their shopping list
     User.update({'local.email' : profile.local.email}, {$push: {'shoppingList': recipe} });
