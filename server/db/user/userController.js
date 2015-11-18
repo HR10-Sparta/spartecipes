@@ -82,7 +82,7 @@ exports.addRecipe = function(data, callback){
 
 exports.removeRecipe = function(data, callback){
   findUser(data.user, function(profile){
-    // User.update({'local.email': profile.local.email}, {});
+    User.update({'local.email': profile.local.email}, {$pull: {'profile.shoppingList': { name: data.recipeName }});
   });
 };
 
