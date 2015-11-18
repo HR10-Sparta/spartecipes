@@ -1,10 +1,7 @@
-var express  = require('express');
-var mongoose = require('mongoose');
+var express = require('express');
+var db      = require('./db/config');
 
 var app = express();
-
-// mongoose connection?
-//mongoose.connect('mongodb://localhost/spartans');
 var port = process.env.PORT || 8000;
 
 /**
