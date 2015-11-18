@@ -44,9 +44,10 @@ angular.module('recipes', ['recipe.services'])
   };
 
 
-    $scope.ok = function() {
-      $uibModalInstance.close();
-      ShoppingList.addToList(recipe);
+
+  $scope.ok = function() {
+    $uibModalInstance.close();
+    ShoppingList.addToList(recipe);
 
     };
 
