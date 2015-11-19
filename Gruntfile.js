@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: ['<%= jshint.files %>'],
+      files: ['<%= jshint.files %>', 'client/**/*.css', '!client/dist/**'],
       tasks: ['build']
     }
   });
