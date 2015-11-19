@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           // Minify concatenated files
-          'clien/dist/scripts/app.min.js': ['dist/scripts/app.js'],
+          'client/dist/scripts/app.min.js': ['client/dist/scripts/app.js'],
         }
       }
     },
