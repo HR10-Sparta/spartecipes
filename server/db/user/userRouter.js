@@ -1,5 +1,6 @@
 var User = require('./userModel');
 var UserController = require('./userController');
+var jwt = require('jwt-simple');
 
 /**
  * Routes for User Models on the DB
@@ -10,9 +11,12 @@ var UserController = require('./userController');
 module.exports = function(app, passport) {
 
   app.route('/recipes')
-    .post(function(req, res, next){
-      UserController.updateShoppingList({user: req.body.user, recipe: req.body.list}, function(err, res){
-        if (err){
+    .post(function(req, res, next) {
+      UserController.updateShoppingList({
+        user: req.body.user,
+        recipe: req.body.list
+      }, function(err, res) {
+        if (err) {
           console.error('Unable to update Shopping List');
         }
       });
@@ -38,15 +42,10 @@ module.exports = function(app, passport) {
         }
         // Successfully registers new user
         // Log them in
-        req.logIn(user, function(err) {
-          if (err) {
-            return res.status(500).json({
-              err: 'Could not log in user'
-            });
-          }
-          res.status(200).json({
-            status: 'Login successful!'
-          });
+        var token = jwt.encode(user, 'supersecret');
+        return res.status(200).send({
+          token: token,
+          user: user
         });
       })(req, res, next);
     });
@@ -65,15 +64,10 @@ module.exports = function(app, passport) {
             err: info
           });
         }
-        req.logIn(user, function(err) {
-          if (err) {
-            return res.status(500).json({
-              err: 'Could not log in user'
-            });
-          }
-          res.status(200).json({
-            status: 'Login successful!'
-          });
+        var token = jwt.encode(user, 'supersecret');
+        return res.status(200).send({
+          token: token,
+          user: user
         });
       })(req, res, next);
     });
@@ -101,13 +95,34 @@ module.exports = function(app, passport) {
           });
         }
         if (user) {
-          req.login(user, function(err) {
-            res.status(200).json({
-              status: 'you are in bro'
-            });
+          var token = jwt.encode(user, 'supersecret');
+          return res.status(200).send({
+            token: token,
+            user: user
           });
         }
       })(req, res, next);
+    });
+
+  app.route('/auth/google/callback')
+    .post(function(req, res, next) {
+      // checking to see if the user is authenticated
+      // grab the token in the header is any
+      // then decode the token, which we end up being the user object
+      // check to see if that user exists in the database
+      var token = req.headers['x-access-token'];
+      if (!token) {
+        next(new Error('No token'));
+      } else {
+        var user = jwt.decode(token, 'secret');
+        UserController.findUser(user, function(foundUser) {
+          if (foundUser) {
+            res.send(200);
+          } else {
+            res.send(401);
+          }
+        });
+      }
     });
 
   // Logout User
