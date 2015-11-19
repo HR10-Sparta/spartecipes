@@ -95,16 +95,18 @@
 </div>
 <div class="jumbotron">
   <div class="container content-one">  
-    <div class="list" ng-repeat="recipe in data.recipes | orderBy: '-StarRating' | limitTo:30">
-      <div ng-click="open(recipe.RecipeID)" class="picture" style="background-image: linear-gradient(
-                                  rgba(0, 0, 0, 0.5),
-                                  rgba(0, 0, 0, 0.5)
-                                  ),  url({{recipe.ImageURL}});">
-        <h4 class="text">{{recipe.Title}}</h4>
+    <div class="row">
+      <div class="list col-md-6" ng-repeat="recipe in data.recipes | orderBy: '-StarRating' | limitTo:30">
+        <div ng-click="open(recipe.RecipeID)" class="picture" style="background-image: linear-gradient(
+                                    rgba(0, 0, 0, 0.5),
+                                    rgba(0, 0, 0, 0.5)
+                                    ),  url({{recipe.ImageURL}});">
+          <h4 class="text">{{recipe.Title}}</h4>
+        </div>
       </div>
     </div>
 </div>
-
+</div>
 
 
 
