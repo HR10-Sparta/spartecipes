@@ -27,7 +27,7 @@ angular.module('recipes', [
     })
     .state('recipes.details', {
       url: '/recipes/:recipe',
-      template: 'app/views/partial_recipe-detail.html'
+      template: 'app/views/partial_recipe-detail.html',
       data: {
         requireLogin: false
       }
