@@ -1,10 +1,10 @@
 angular.module('recipes', [
-  'recipes.services',
-  'recipes.links',
-  'recipes.search',
-  'recipes.login',
-  'recipes.signup',
-  'ui-router',
+  // 'recipes.services',
+  // 'recipes.links',
+  // 'recipes.search',
+  // 'recipes.login',
+  // 'recipes.signup',
+  'ui.router',
   'ui.bootstrap'
 ])
 .config(function($routeProvider,  $httpProvider, $locationProvider, $stateProvider) {

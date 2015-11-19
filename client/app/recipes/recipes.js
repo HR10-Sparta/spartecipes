@@ -1,4 +1,4 @@
-angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
+angular.module('recipes')
 
 .controller('HeaderController', function ($scope, Search, $uibModal) {
   // Your code here

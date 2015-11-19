@@ -2,15 +2,14 @@
 <html ng-app='recipes'>
 <head>
   <title>Recipes &amp; Shopping List | by Spartecipes</title>
-  <!-- Latest compiled and minified CSS & JS for Bootstrap and JS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  
   <!-- Link to CSS File -->
   <link rel="stylesheet" href="dist/styles/style.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  
-  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+  <!-- Latest compiled and minified CSS & JS for Bootstrap and JS -->
+
+  <!-- bower:css -->
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
 
 </head>
 <body ng-controller="HeaderController">
@@ -127,7 +126,16 @@
   </script>
 
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  
+  <!-- bower:js -->
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbower -->
   <script src="dist/scripts/app.js"></script>
+
+
 </body>
 </html>
 
