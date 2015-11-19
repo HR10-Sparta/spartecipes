@@ -1,10 +1,14 @@
-angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
+angular.module('recipes.recipes', [])
 
 .controller('HeaderController', function ($scope, Search, $uibModal) {
   // Your code here
   $scope.data = {};
   angular.extend($scope, Search);
-  
+
+  $scope.changeState = function (state) {
+    $state.go(state);
+  };
+
   $scope.retrieveRecipes = function (data) {
     Search.getRecipes(data).then(function (recipes) {
       $scope.data.recipes = recipes;
@@ -39,7 +43,7 @@ angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
   $scope.ok = function () {
     $uibModalInstance.close();
     ShoppingList.addToList(item);
-    
+
   };
 
 });

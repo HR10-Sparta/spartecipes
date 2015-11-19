@@ -1,8 +1,8 @@
 angular.module('recipes', [
   'recipes.services',
-  'recipes.links',
+  'recipes.recipes',
   'recipes.search',
-  'recipes.login',
+  'recipes.auth',
   'recipes.signup',
   'ui-router',
   'ui.bootstrap'
@@ -18,41 +18,41 @@ angular.module('recipes', [
         requireLogin: false
       }
     })
-    .state('recipes', {
+    .state('main.recipes', {
       url: '/recipes',
       template: 'app/views/partial_recipes.html',
       data: {
         requireLogin: false
       }
     })
-    .state('recipes.details', {
+    .state('main.recipes.details', {
       url: '/recipes/:recipe',
       template: 'app/views/partial_recipe-detail.html',
       data: {
         requireLogin: false
       }
     })
-    .state('login', {
+    .state('main.login', {
       url: '/login',
       template: 'app/login/login.html',
-      controller: 'LoginController',
+      controller: 'AuthController',
       data: {
         requireLogin: false
       }
       // child state of `app`
       // requireLogin === true
     })
-    .state('signup', {
+    .state('main.signup', {
       url: '/signup',
       template: 'app/signup/signup.html',
-      controller: 'SignupController',
+      controller: 'AuthController',
       data: {
         requireLogin: false
       }
       // child state of `app`
       // requireLogin === true
     })
-    .state('list', {
+    .state('main.list', {
       url: '/list',
       template: '/shoppinglist/shoppinglist.html',
       controller: 'ShoppinglistController',
@@ -60,7 +60,7 @@ angular.module('recipes', [
         requireLogin: true
       }
     })
-    .state('logout', {
+    .state('main.logout', {
       url: '/logout',
       controller: 'LoginController'
     });
@@ -82,11 +82,18 @@ angular.module('recipes', [
   };
   return attach;
 });
-// .run(function ($rootScope, $location, Auth) {
+.run(function ($rootScope, $location, Auth) {
 
-//   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-//     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-//       $location.path('/signin');
-//     }
-//   });
-// });
+  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+      $location.path('/signin');
+    }
+  });
+
+$rootScope.$on('$stateChangeStart',
+  function(event, toState, toParams, fromState, fromParams){
+    if(toState && toState.data.requireLogin && !Auth.isAuth()) {
+      $location.path('/');
+    }
+})
+});

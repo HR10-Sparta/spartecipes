@@ -9,7 +9,8 @@
   <!-- Link to CSS File -->
   <link rel="stylesheet" href="dist/styles/style.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
 
 </head>
@@ -19,11 +20,13 @@
   <div id="search">
     <form ng-model="searchCriteria" id="searchform">
       <label id="label" for="searchtext">search: </label>
-      <input id="searchtext" name="searchtext" type="text" />
+      <div id="searchInputArea">
+        <input id="searchtext" name="searchtext" type="text"></span>
+      </div>
     </form>
   </div>
   <!-- ==================== Login Modal HTML ======================= -->
-  <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form>
@@ -49,7 +52,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- ============  Header  ========================  -->
   <header id="header">
     <nav class="navbar navbar-inverse">
@@ -93,8 +96,8 @@
     </div>
   </header>
 </div>
-<div class="jumbotron">
-  <div class="container content-one">  
+<!-- <div class="jumbotron">
+  <div class="container content-one">
     <div class="list" ng-repeat="recipe in data.recipes | orderBy: '-StarRating' | limitTo:30">
       <div ng-click="open(recipe.RecipeID)" class="picture" style="background-image: linear-gradient(
                                   rgba(0, 0, 0, 0.5),
@@ -103,14 +106,12 @@
         <h4 class="text">{{recipe.Title}}</h4>
       </div>
     </div>
-</div>
-
-
+</div> -->
 
 
 <ui-view></ui-view>
-  <script type="text/ng-template" id="RecipeContent.html">
-    <div class="head">  
+  <!--<script type="text/ng-template" id="RecipeContent.html">
+    <div class="head">
       <h4><strong>{{currentRecipe.Title}}</strong></h4>
       <h5><strong>{{currentRecipe.Category}} - {{currentRecipe.Subcategory}}</strong></h5>
       <h5><strong>Ingredients:</strong></h5>
@@ -122,7 +123,7 @@
       <button class="btn btn-default" type="button" ng-click="no()">Go Back</button>
       <button class="btn btn-primary" type="button" ng-click="ok()">Add Recipe</button>
     </div>
-  </script>
+  </script>-->
 
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   <script src="dist/scripts/app.js"></script>
