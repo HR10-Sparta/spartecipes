@@ -24,19 +24,11 @@
 </head>
 
 <!-- ==================== KeypressEvents Directive ======================= -->
-    <script src="lib/jquery/dist/jquery.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <!-- endbower -->
 
 <body ng-controller="HeaderController" keypress-events>
 <search></search>
 <!-- ==================== Search Modal Directive ======================= -->
-
 <search></search>
-
 
 <div id="HeaderController">
   <!-- ====================  Search bar HTML ======================= -->
@@ -47,7 +39,7 @@
         <span class="title"> <strong> Ingredient List</strong> </span>
         <img id="wrap2" align="middle" src="x.png">
       </div> 
-        <div class="recipeList"ng-repeat="(key, prop) in displayList">{{prop[0]}} {{prop[1]}} {{key}} </div>
+        <div class="recipeList"ng-repeat="(key, prop) in ingredientList">{{prop[0]}} {{prop[1]}} {{key}} </div>
       <div class="recipe"> <hr> <strong> Recipe List </strong> 
           <div ng-repeat="recipe in list">
             <div class="recipeName" ng-click="open(recipe.RecipeID)"> {{recipe.Title}} </div>
@@ -57,34 +49,6 @@
     </div>
   </div>
 
-  <!-- ==================== Login Modal HTML ======================= -->
-  <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <form>
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Login</h4>
-          </div>
-          <div class="modal-body">
-              <div class="form-group">
-                <label for="email-input">Email address</label>
-                <input type="email" class="form-control" id="email-input" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label for="password-input">Password</label>
-                <input type="password" class="form-control" id="password-input" placeholder="Password">
-              </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-default">Login</button>
-            <button type="button" class="btn btn-primary">Create Account</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
   <!-- ============  Header  ========================  -->
   <header id="header">
     <nav class="navbar navbar-inverse">
@@ -155,4 +119,3 @@
 
 </body>
 </html>
-
