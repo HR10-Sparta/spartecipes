@@ -64,7 +64,10 @@ angular.module('recipes', [
       url: '/logout',
       controller: 'LoginController'
     });
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
 })
 
 // we will use this when we implement jwt
