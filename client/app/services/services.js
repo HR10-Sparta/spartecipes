@@ -97,6 +97,12 @@ angular.module('recipes.services', [])
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
+    signout: signout,
+    googleAuth: googleAuth
   };
-});
+})
+.factory('State', function ($stateProvider, $scope) {
+   $scope.changeState = function (state) {
+    $state.go(state);
+  };
+})
