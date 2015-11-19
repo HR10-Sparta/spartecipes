@@ -39,7 +39,7 @@
         <span class="title"> <strong> Ingredient List</strong> </span>
         <img id="wrap2" align="middle" src="x.png">
       </div> 
-        <div class="recipeList"ng-repeat="(key, prop) in ingredientList">{{prop[0]}} {{prop[1]}} {{key}} </div>
+        <div class="recipeList"ng-repeat="(key, prop) in displayList">{{prop[0]}} {{prop[1]}} {{key}} </div>
       <div class="recipe"> <hr> <strong> Recipe List </strong> 
           <div ng-repeat="recipe in list">
             <div class="recipeName" ng-click="open(recipe.RecipeID)"> {{recipe.Title}} </div>
