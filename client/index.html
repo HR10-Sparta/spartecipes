@@ -39,7 +39,34 @@
 
 
 <div id="HeaderController">
+<<<<<<< d6505fbf7bba27e3b7bcde96a293173f43ac311c
 
+=======
+  <!-- ====================  Search bar HTML ======================= -->
+  <div id="wrapper">
+ 
+    <div id="sidebar-wrapper">
+      <div class="sidebar">
+        <span class="title"> <strong> Ingredient List</strong> </span>
+        <img id="wrap2" align="middle" src="x.png">
+      </div> 
+        <div class="recipeList"ng-repeat="(key, prop) in ingredientList">{{prop[0]}} {{prop[1]}} {{key}} </div>
+      <div class="recipe"> <hr> <strong> Recipe List </strong> 
+          <div ng-repeat="recipe in list">
+            <div class="recipeName" ng-click="open(recipe.RecipeID)"> {{recipe.Title}} </div>
+            <img class="recipeImage" ng-click="removeFromList(recipe.RecipeID)" align='middle'src="x.png">
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="search">
+    <form ng-model="searchCriteria" id="searchform">
+      <label id="label" for="searchtext">search: </label>
+      <input id="searchtext" name="searchtext" type="text" />
+    </form>
+  </div>
+>>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
   <!-- ==================== Login Modal HTML ======================= -->
   <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -87,7 +114,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Recipes<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Shopping Cart</a></li>
+            <li id="menu-toggle"><a href="#">Shopping Cart</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" data-toggle="modal" data-target="#myLogin">Log in</a></li>
@@ -123,9 +150,11 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
 </div>
 
+<<<<<<< d6505fbf7bba27e3b7bcde96a293173f43ac311c
 <ui-view></ui-view>
 
   <script type="text/ng-template" id="RecipeContent.html">
@@ -142,6 +171,12 @@
       <button class="btn btn-primary" type="button" ng-click="ok()">Add Recipe</button>
     </div>
   </script>
+=======
+
+
+
+<ui-view></ui-view>
+>>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
 
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
