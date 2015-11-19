@@ -23,6 +23,18 @@ $.fn.setCursorPosition = function(pos) {
 // intialize
 $(document).ready(function() {
   // cache variables
+  $("#menu-toggle").on('click', function(e) {
+    console.log("clicked shopping cart");
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+
+    $("#wrap2").on('click', function(e) {
+    console.log("clicked shopping cart");
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+
   var $search = $('#search');
   var $searchtext = $('#searchtext');
   // on any keydown, start parsing keyboard input

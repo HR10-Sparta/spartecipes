@@ -1,9 +1,15 @@
 angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
 
-.controller('HeaderController', function ($scope, Search, $uibModal) {
+.controller('HeaderController', function ($scope, Search, $uibModal, ShoppingList) {
   // Your code here
   $scope.data = {};
-  angular.extend($scope, Search);
+  angular.extend($scope, Search, ShoppingList);
+
+  $scope.updateList = function(){
+    ShoppingList.orderIngredients(function (newList){
+      $scope.data.ingredients = newList;
+    })
+  }
   
   $scope.retrieveRecipes = function (data) {
     Search.getRecipes(data).then(function (recipes) {
@@ -15,7 +21,7 @@ angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
     Search.getSingleRecipe(recipeID).then(function (recipe){
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
-        templateUrl: 'RecipeContent.html',
+        templateUrl: 'app/recipes/RecipeContent.html',
         controller: 'RecipeInstanceCtrl',
         resolve: {
           item: function () {
@@ -38,7 +44,8 @@ angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
 
   $scope.ok = function () {
     $uibModalInstance.close();
-    ShoppingList.addToList(item);
+    ShoppingList.addToList(item, ShoppingList.orderIngredients);
+    //$scope.updateList();
     
   };
 
