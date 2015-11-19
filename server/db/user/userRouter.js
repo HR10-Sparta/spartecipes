@@ -30,13 +30,15 @@ module.exports = function(app, passport) {
       passport.authenticate('local-signup', function(err, user, info) {
         // Signup error
         if (err) {
-          return res.status(500).json({
+          return res.send({
+            token: false,
             err: err
           });
         }
         // No user returned
         if (!user) {
-          return res.status(401).json({
+          return res.send({
+            token: false,
             err: info
           });
         }
@@ -55,12 +57,14 @@ module.exports = function(app, passport) {
     .post(function(req, res, next) {
       passport.authenticate('local-login', function(err, user, info) {
         if (err) {
-          return res.status(500).json({
+          return res.send({
+            token: false,
             err: err
           });
         }
         if (!user) {
-          return res.status(401).json({
+          return res.send({
+            token: false,
             err: info
           });
         }
