@@ -10,9 +10,9 @@ angular.module('recipes', [
 .config(function($routeProvider,  $httpProvider, $locationProvider, $stateProvider) {
   $urlRouterProvider.otherwise("/");
   $stateProvider
-    .state('welcome', {
+    .state('main', {
       url: '/',
-      template: 'app/search/search.html',
+      template: 'app/views/partial_main.html',
       controller: 'SearchController',
       data: {
         requireLogin: false
@@ -20,9 +20,14 @@ angular.module('recipes', [
     })
     .state('recipes', {
       url: '/recipes',
-      template: 'app/recipes/recipes.html'
+      template: 'app/views/partial_recipes.html',
+      data: {
+        requireLogin: false
+      }
     })
     .state('recipes.details', {
+      url: '/recipes/:recipe',
+      template: 'app/views/partial_recipe-detail.html'
       data: {
         requireLogin: false
       }
