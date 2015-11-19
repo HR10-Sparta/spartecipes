@@ -57,7 +57,7 @@ angular.module('recipes.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return resp;
     });
   };
 
@@ -69,7 +69,7 @@ angular.module('recipes.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return resp;
     });
   };
 
@@ -91,7 +91,6 @@ angular.module('recipes.services', [])
     $window.localStorage.removeItem('spartanShield');
     $location.path('/');
   };
-
 
   return {
     login: login,

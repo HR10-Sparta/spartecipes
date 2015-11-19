@@ -24,8 +24,8 @@ angular.module('recipes')
       });
     };
 
-    $scope.logout = function(){
-    	Auth.logout();
+    $scope.logout = function() {
+      Auth.logout();
     };
 
   }])
@@ -40,19 +40,29 @@ angular.module('recipes')
 
     $scope.login = function() {
       Auth.login($scope.user)
-        .then(function(token) {
-          $window.localStorage.setItem('spartanShield', token);
-          $scope.close();
+        .then(function(resp) {
+          if (resp.data.token) {
+            $window.localStorage.setItem('spartanShield', resp.data.token);
+            $scope.close();
+          } else {
+            if (resp.data.err) {
+              $scope.message = resp.data.err;
+            }
+          }
         });
     };
 
     $scope.signup = function() {
       Auth.signup($scope.user)
-        .then(function(token) {
-          console.log(token);
-          $window.localStorage.setItem('spartanShield', token);
-          $scope.close();
+        .then(function(resp) {
+          if (resp.data.token) {
+            $window.localStorage.setItem('spartanShield', resp.data.token);
+            $scope.close();
+          } else {
+            if (resp.data.err) {
+              $scope.message = resp.data.err;
+            }
+          }
         });
     };
-
   }]);

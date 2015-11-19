@@ -1,9 +1,12 @@
 <form>
     <div class="modal-header">
-        <button ng-click="close()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button ng-click="close()" type="button" class="close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Login</h4>
     </div>
     <div class="modal-body">
+        <div ng-show="message" class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
         <div class="form-group">
             <label for="email-input">Email address</label>
             <input ng-model="user.email" type="email" class="form-control" id="email-input" placeholder="Email">
