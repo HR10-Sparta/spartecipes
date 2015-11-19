@@ -14,6 +14,11 @@
 
   <!-- ==================== Bower JS Dependencies ======================= -->
   <!-- bower:js -->
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <!-- endbower -->
   <base href="/">
 </head>
@@ -21,21 +26,21 @@
 <!-- ==================== KeypressEvents Directive ======================= -->
 
 <body ng-controller="HeaderController" keypress-events>
-
+<search></search>
 <!-- ==================== Search Modal Directive ======================= -->
 
 
 <div id="HeaderController">
   <!-- ====================  Search bar HTML ======================= -->
   <div id="wrapper">
- 
+
     <div id="sidebar-wrapper">
       <div class="sidebar">
         <span class="title"> <strong> Ingredient List</strong> </span>
         <img id="wrap2" align="middle" src="x.png">
-      </div> 
+      </div>
         <div class="recipeList"ng-repeat="(key, prop) in ingredientList">{{prop[0]}} {{prop[1]}} {{key}} </div>
-      <div class="recipe"> <hr> <strong> Recipe List </strong> 
+      <div class="recipe"> <hr> <strong> Recipe List </strong>
           <div ng-repeat="recipe in list">
             <div class="recipeName" ng-click="open(recipe.RecipeID)"> {{recipe.Title}} </div>
             <img class="recipeImage" ng-click="removeFromList(recipe.RecipeID)" align='middle'src="x.png">
@@ -66,7 +71,7 @@
             <li id="menu-toggle"><a href="#">Shopping Cart</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            
+
             <!-- ==================== Login/Logout Directive ======================= -->
             <li login></li>
             <li logout></li>
@@ -84,7 +89,9 @@
 <!-- ====================  ui-view  ========================  -->
 <div class="jumbotron">
   <div class="container">
-    <div ui-view></div>
+    <div class="ui-view-container">
+      <div ui-view></div>
+    </div>
   </div>
 </div>
 
