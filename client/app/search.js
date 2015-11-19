@@ -1,4 +1,17 @@
+$(document).ready(function() {
+  // cache variables
+  $("#menu-toggle").on('click', function(e) {
+    console.log("clicked shopping cart");
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
 
+    $("#wrap2").on('click', function(e) {
+    console.log("clicked shopping cart");
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+});
 
 /*============================================
 =            Video Player Section            =

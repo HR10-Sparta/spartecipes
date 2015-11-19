@@ -37,22 +37,19 @@ angular.module('recipes.services', [])
   var list = [];
   var ingredientList = {};
 
-<<<<<<< d58b7c6685518b326e342005c8aaa79bfc83351d
-  var addToList = function(recipe) {
-=======
   var addFrac = function(frac1, frac2){
     console.log(Number(frac1));
     console.log(Number(frac1) + Number(frac2));
     if (frac1.length > 2 && frac2.length > 2)
       if(frac1[2] === frac2[2]){
         newTop = Number(frac1[0]) + Number(frac2[0]);
-        return newTop + '/' + frac[2]
+        return newTop + '/' + frac[2];
     }
-  }
+  };
+  
   var addToList = function(recipe, cb){
->>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
     list.push(recipe);
-    cb(list)
+    cb(list);
   };
 
   var removeFromList = function(id) {

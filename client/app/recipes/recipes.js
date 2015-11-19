@@ -17,8 +17,8 @@ angular.module('recipes.recipes', [])
   $scope.updateList = function(){
     ShoppingList.orderIngredients(function (newList){
       $scope.data.ingredients = newList;
-    })
-  }
+    });
+  };
   
 >>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
   $scope.retrieveRecipes = function (data) {

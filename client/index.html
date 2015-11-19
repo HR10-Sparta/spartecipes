@@ -39,9 +39,6 @@
 
 
 <div id="HeaderController">
-<<<<<<< d6505fbf7bba27e3b7bcde96a293173f43ac311c
-
-=======
   <!-- ====================  Search bar HTML ======================= -->
   <div id="wrapper">
  
@@ -66,7 +63,7 @@
       <input id="searchtext" name="searchtext" type="text" />
     </form>
   </div>
->>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
+
   <!-- ==================== Login Modal HTML ======================= -->
   <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -154,29 +151,8 @@
 </div>
 </div>
 
-<<<<<<< d6505fbf7bba27e3b7bcde96a293173f43ac311c
-<ui-view></ui-view>
-
-  <script type="text/ng-template" id="RecipeContent.html">
-    <div class="head">  
-      <h4><strong>{{currentRecipe.Title}}</strong></h4>
-      <h5><strong>{{currentRecipe.Category}} - {{currentRecipe.Subcategory}}</strong></h5>
-      <h5><strong>Ingredients:</strong></h5>
-        <div class="ingredients" ng-repeat="ingredient in currentRecipe.Ingredients">{{ingredient.DisplayQuantity}} {{ingredient.Unit}} {{ingredient.Name}}<br></div>
-      <h5><strong>Instructions:</strong></h5>
-        <div class="ingredients">{{currentRecipe.Instructions}}</div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-default" type="button" ng-click="no()">Go Back</button>
-      <button class="btn btn-primary" type="button" ng-click="ok()">Add Recipe</button>
-    </div>
-  </script>
-=======
-
-
 
 <ui-view></ui-view>
->>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
 
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
