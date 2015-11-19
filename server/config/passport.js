@@ -104,47 +104,47 @@ module.exports = function(passport) {
    * Google SignUp Strategy
    */
 
-  passport.use(new GoogleStrategy({
-      // TODO --> Add in Auth info
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL
+  // passport.use(new GoogleStrategy({
+  //     // TODO --> Add in Auth info
+  //     clientID: process.env.GOOGLE_CLIENT_ID,
+  //     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  //     callbackURL: process.env.GOOGLE_CALLBACK_URL
 
-    },
-    function(token, refreshToken, profile, done) {
-      // try to find the user based on their google id
-      User.findOne({
-        'google.id': profile.id
-      }, function(err, user) {
+  //   },
+  //   function(token, refreshToken, profile, done) {
+  //     // try to find the user based on their google id
+  //     User.findOne({
+  //       'google.id': profile.id
+  //     }, function(err, user) {
         
-        if (err)
-          return done(err);
+  //       if (err)
+  //         return done(err);
 
-        if (user) {
+  //       if (user) {
 
-          // if a user is found, log them in
-          return done(null, user);
-        } else {
-          // if user is not in the DB, add a new user
-          var newUser = new User();
+  //         // if a user is found, log them in
+  //         return done(null, user);
+  //       } else {
+  //         // if user is not in the DB, add a new user
+  //         var newUser = new User();
 
-          // set all user info
-          // TODO --> Resolve with DB
-          newUser.google.id = profile.id;
-          newUser.google.token = token;
-          newUser.google.name = profile.displayName;
-          newUser.google.email = profile.emails[0].value; // pull the first email
+  //         // set all user info
+  //         // TODO --> Resolve with DB
+  //         newUser.google.id = profile.id;
+  //         newUser.google.token = token;
+  //         newUser.google.name = profile.displayName;
+  //         newUser.google.email = profile.emails[0].value; // pull the first email
 
-          console.log(newUser);
-          // save the user
-          newUser.save(function(err) {
-            if (err)
-              throw err;
-            return done(null, newUser);
-          });
-        }
-      });
-    }));
+  //         console.log(newUser);
+  //         // save the user
+  //         newUser.save(function(err) {
+  //           if (err)
+  //             throw err;
+  //           return done(null, newUser);
+  //         });
+  //       }
+  //     });
+  //   }));
 
 
 

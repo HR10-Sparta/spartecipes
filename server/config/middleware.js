@@ -12,7 +12,8 @@ module.exports = function(app, express){
 	/**
 	 * Set up Routers
 	 */
-	var userRouter = express.Router();
+  var userRouter   = express.Router();
+  var recipeRouter = express.Router();
 
   /**
    * Set up Passport
@@ -45,6 +46,7 @@ module.exports = function(app, express){
    * Funnel all '/api/users' requests to the userRouter
    */
   app.use('/api/users', userRouter);
+  app.use('/api/recipes', recipeRouter);
   
   /**
    * Set up Error Handling
@@ -56,6 +58,7 @@ module.exports = function(app, express){
    * Set up userRouter
    */
   require('../db/user/userRouter.js')(userRouter, passport);
+  require('../db/recipe/recipeRouter.js')(recipeRouter);
 };
 
 
