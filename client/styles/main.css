@@ -107,7 +107,7 @@
 .content-one {
   background-color: #F8F8F8;
   border-color: #F7F7F7;
-  height: 500px;
+  min-height: 500px;
   width: 100%;
   font-color: black;
   color: black;

@@ -1,4 +1,4 @@
-var module = angular.module('recipe.services', [])
+angular.module('recipes')
 
 .factory('Search', function($http) {
   var currentRecipe;

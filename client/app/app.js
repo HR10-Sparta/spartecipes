@@ -1,58 +1,59 @@
+
 angular.module('recipes', [
-  'recipes.services',
-  'recipes.recipes',
-  'recipes.search',
-  'recipes.auth',
-  'recipes.signup',
-  'ui-router',
+  // 'recipes.services',
+  // 'recipes.links',
+  // 'recipes.search',
+  // 'recipes.login',
+  // 'recipes.signup',
+  'ui.router',
   'ui.bootstrap'
 ])
 .config(function($routeProvider,  $httpProvider, $locationProvider, $stateProvider) {
   $urlRouterProvider.otherwise("/");
   $stateProvider
-    .state('main', {
+    .state('welcome', {
       url: '/',
-      template: 'app/views/partial_main.html',
+      template: 'app/search/search.html',
       controller: 'SearchController',
       data: {
         requireLogin: false
       }
     })
-    .state('main.recipes', {
+    .state('recipes', {
       url: '/recipes',
-      template: 'app/views/partial_recipes.html',
+      template: 'app/recipes/recipes.html'
       data: {
         requireLogin: false
       }
     })
-    .state('main.recipes.details', {
+    .state('recipes.details', {
       url: '/recipes/:recipe',
       template: 'app/views/partial_recipe-detail.html',
       data: {
         requireLogin: false
       }
     })
-    .state('main.login', {
+    .state('login', {
       url: '/login',
       template: 'app/login/login.html',
-      controller: 'AuthController',
+      controller: 'LoginController',
       data: {
         requireLogin: false
       }
       // child state of `app`
       // requireLogin === true
     })
-    .state('main.signup', {
+    .state('signup', {
       url: '/signup',
       template: 'app/signup/signup.html',
-      controller: 'AuthController',
+      controller: 'SignupController',
       data: {
         requireLogin: false
       }
       // child state of `app`
       // requireLogin === true
     })
-    .state('main.list', {
+    .state('list', {
       url: '/list',
       template: '/shoppinglist/shoppinglist.html',
       controller: 'ShoppinglistController',
@@ -60,7 +61,7 @@ angular.module('recipes', [
         requireLogin: true
       }
     })
-    .state('main.logout', {
+    .state('logout', {
       url: '/logout',
       controller: 'LoginController'
     });
@@ -84,11 +85,11 @@ angular.module('recipes', [
 });
 .run(function ($rootScope, $location, Auth) {
 
-  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/signin');
-    }
-  });
+//   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+//     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+//       $location.path('/signin');
+//     }
+//   });
 
 $rootScope.$on('$stateChangeStart',
   function(event, toState, toParams, fromState, fromParams){
