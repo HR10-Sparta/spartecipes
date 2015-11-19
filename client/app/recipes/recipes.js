@@ -1,6 +1,6 @@
 angular.module('recipes')
 
-.controller('HeaderController', function ($scope, Search, $uibModal) {
+.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal) {
   // Your code here
   $scope.data = {};
   angular.extend($scope, Search);
@@ -10,6 +10,10 @@ angular.module('recipes')
       $scope.data.recipes = recipes;
     });
   };
+
+  $rootScope.$on('search', function(e, search){
+    $scope.retrieveRecipes(search);
+  });
 
   $scope.open = function (recipeID) {
     Search.getSingleRecipe(recipeID).then(function (recipe){

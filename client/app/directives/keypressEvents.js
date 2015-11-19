@@ -6,8 +6,7 @@ angular.module('recipes')
       return {
         restrict: 'A',
         link: function() {
-          $document.bind('keypress', function(e) {
-            console.log('Got keypress:', e.which);
+          $document.bind('keydown', function(e) {
             $rootScope.$broadcast('keypress', e);
             $rootScope.$broadcast('keypress:' + e.which, e);
           });
