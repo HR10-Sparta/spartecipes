@@ -1,15 +1,26 @@
 angular.module('recipes.recipes', [])
 
-.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal) {
+  
+
+
+.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal, ShoppingList) {
+
   // Your code here
   $scope.data = {};
-  angular.extend($scope, Search);
+  angular.extend($scope, Search, ShoppingList);
 
   $scope.changeState = function (state) {
     $state.go(state);
   };
 
+  $scope.updateList = function(){
+    ShoppingList.orderIngredients(function (newList){
+      $scope.data.ingredients = newList;
+    });
+  };
+  
   $scope.retrieveRecipes = function (data) {
+    console.log("getting called");
     Search.getRecipes(data).then(function (recipes) {
       $scope.data.recipes = recipes;
     });
@@ -23,7 +34,7 @@ angular.module('recipes.recipes', [])
     Search.getSingleRecipe(recipeID).then(function (recipe){
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
-        templateUrl: 'RecipeContent.html',
+        templateUrl: 'app/recipes/RecipeContent.html',
         controller: 'RecipeInstanceCtrl',
         resolve: {
           item: function () {
@@ -34,6 +45,7 @@ angular.module('recipes.recipes', [])
      });
   };
 })
+
 .controller('RecipeInstanceCtrl', function ($scope, $uibModalInstance, Search, item, ShoppingList) {
 
    angular.extend($scope, Search);
@@ -46,8 +58,7 @@ angular.module('recipes.recipes', [])
 
   $scope.ok = function () {
     $uibModalInstance.close();
-    ShoppingList.addToList(item);
-
+    ShoppingList.addToList(item, ShoppingList.orderIngredients);
+    //$scope.updateList();
   };
-
 });
