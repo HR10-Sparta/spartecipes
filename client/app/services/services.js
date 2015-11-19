@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-angular.module('recipes')
-=======
+
 angular.module('recipes.services', [])
->>>>>>> (fix) Fixed multiple declarations of 'recipes' module.
+
 
 .factory('Search', function($http) {
   var currentRecipe;
