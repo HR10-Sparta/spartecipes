@@ -73,8 +73,8 @@
           <ul class="nav navbar-nav navbar-right">
 
             <!-- ==================== Login/Logout Directive ======================= -->
-            <li login></li>
-            <li logout></li>
+            <li ng-hide="!isAuth" login></li>
+            <li ng-show="!isAuth" logout></li>
 
           </ul>
         </div><!-- /.navbar-collapse -->

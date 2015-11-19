@@ -5,7 +5,7 @@
 
 .ui-view-container {
   position: relative;
-  height: 100%;
+  height: 1000px;
 }
 
 [ui-view].ng-enter, [ui-view].ng-leave {
@@ -144,9 +144,8 @@
 /*======================================
 =            Content Area 1            =
 ======================================*/
-
+/*
 .col-centered {
-  /*float: none;*/
   text-align: center;
 }
 
@@ -154,8 +153,7 @@
   text-align: left;
   width: 100%;
   margin: 0 auto;
-  /*padding-left: 1%;*/
-}
+}*/
 
 .content-one {
   background-color: #F8F8F8;
@@ -168,22 +166,16 @@
 }
 
 .list {
-  position: relative;
   padding: 20px;
   display: inline-block;
-  width: 100%;
-  min-height: 200px;
-  margin: 10px;
 }
 
 .picture {
-  position: absolute;
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 100%;
-  height: 100%;
+  height: 250px;
+  width: 400px;
   padding: 15px 15px 0;
-  margin: 10px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
   -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.4);
@@ -191,13 +183,18 @@
 }
 
 .picture:hover {
-  position: absolute;
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 100%;
-  height: 100%;
+  height: 250px;
+  width: 400px;
   padding: 15px 15px 0;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.05);
+  -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.05);
+  -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.05);
 }
+
+
 
 .text {
   color: white;
