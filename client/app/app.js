@@ -1,5 +1,6 @@
 
 angular.module('recipes', [
+  'recipes.recipes',
   'recipes.services',
   'ui.router',
   'ui.bootstrap'
