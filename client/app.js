@@ -1,63 +1,82 @@
 angular.module('recipes', [
   'recipes.services',
   'recipes.links',
-  'recipes.shorten',
-  'recipes.auth',
-  'ngRoute',
+  'recipes.search',
+  'recipes.login',
+  'recipes.signup',
+  'ui-router',
   'ui.bootstrap'
 ])
-.config(function($routeProvider,  $httpProvider, $locationProvider) {
-  $routeProvider
-    .when('/login', {
-      templateUrl: 'app/login/login.html',
+.config(function($routeProvider,  $httpProvider, $locationProvider, $stateProvider) {
+  $urlRouterProvider.otherwise("/");
+  $stateProvider
+    .state('welcome', {
+      url: '/',
+      template: 'app/search/search.html',
+      controller: 'SearchController',
+      data: {
+        requireLogin: false
+      }
+    })
+    .state('recipes', {
+      url: '/recipes',
+      template: 'app/recipes/recipes.html'
+    })
+    .state('recipes.details', {
+      data: {
+        requireLogin: false
+      }
+    })
+    .state('login', {
+      url: '/login',
+      template: 'app/login/login.html',
+      controller: 'LoginController',
+      data: {
+        requireLogin: false
+      }
+      // child state of `app`
+      // requireLogin === true
+    })
+    .state('signup', {
+      url: '/signup',
+      template: 'app/signup/signup.html',
+      controller: 'SignupController',
+      data: {
+        requireLogin: false
+      }
+      // child state of `app`
+      // requireLogin === true
+    })
+    .state('list', {
+      url: '/list',
+      template: '/shoppinglist/shoppinglist.html',
+      controller: 'ShoppinglistController',
+      data: {
+        requireLogin: true
+      }
+    })
+    .state('logout', {
+      url: '/logout',
       controller: 'LoginController'
-    })
-    .when('/signup', {
-      templateUrl: 'app/signup/signup.html',
-      controller: 'SignupController'
-    })
-    .when('/recipes/:recipes', {
-      // will use $routeParameter.recipes for look up
-      templateUrl: 'app/recipes/recipes.html',
-      controller: 'RecipesController',
-      authenticate: true
-    })
-    .when('/list', {
-      templateUrl: 'app/list/list.html',
-      controller: 'ListController',
-      authenticate: true
-    })
-    .when('/myrecipes', {
-      templateUrl: 'app/myrecipes/myrecipes.html',
-      controller: 'MyrecipesController',
-      authenticate: true
-    })
-    .otherwise({
-      redirectTo: '/'
     });
-    // $httpProvider.interceptors.push('AttachTokens');
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-  });
-});
+})
 
 // we will use this when we implement jwt
 //
-// .factory('AttachTokens', function ($window) {
+.factory('AttachTokens', function ($window) {
 
-//   var attach = {
-//     request: function (object) {
-//       var jwt = $window.localStorage.getItem('com.shortly');
-//       if (jwt) {
-//         object.headers['x-access-token'] = jwt;
-//       }
-//       object.headers['Allow-Control-Allow-Origin'] = '*';
-//       return object;
-//     }
-//   };
-//   return attach;
-// })
+  var attach = {
+    request: function (object) {
+      var jwt = $window.localStorage.getItem('spartanShield');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
+});
 // .run(function ($rootScope, $location, Auth) {
 
 //   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
