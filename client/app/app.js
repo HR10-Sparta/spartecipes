@@ -19,12 +19,12 @@ angular.module('recipes', [
     //   url: '/recipes',
     //   template: 'app/recipes/recipes.html'
     // })
-        requireLogin: false
-      }
-    })
+    //     requireLogin: false
+    //   }
+    // })
     // .state('recipes.details', {
-      url: '/recipes/:recipe',
-      template: 'app/views/partial_recipe-detail.html',
+      // url: '/recipes/:recipe',
+      // template: 'app/views/partial_recipe-detail.html',
     //   data: {
     //     requireLogin: false
     //   }
@@ -78,7 +78,7 @@ angular.module('recipes', [
     }
   };
   return attach;
-});
+})
 .run(function ($rootScope, $location, Auth) {
 
 //   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
@@ -87,10 +87,10 @@ angular.module('recipes', [
 //     }
 //   });
 
-$rootScope.$on('$stateChangeStart',
-  function(event, toState, toParams, fromState, fromParams){
-    if(toState && toState.data.requireLogin && !Auth.isAuth()) {
-      $location.path('/');
-    }
-})
+  $rootScope.$on('$stateChangeStart',
+    function(event, toState, toParams, fromState, fromParams){
+      if(toState && toState.data.requireLogin && !Auth.isAuth()) {
+        $location.path('/');
+      }
+  });
 });
