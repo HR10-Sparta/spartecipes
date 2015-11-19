@@ -1,0 +1,20 @@
+<form>
+    <div class="modal-header">
+        <button ng-click="close()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="email-input">Email address</label>
+            <input ng-model="user.email" type="email" class="form-control" id="email-input" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="password-input">Password</label>
+            <input ng-model="user.password" type="password" class="form-control" id="password-input" placeholder="Password">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="login()" type="submit" class="btn btn-default">Login</button>
+        <button ng-click="signup()" type="button" class="btn btn-primary">Create Account</button>
+    </div>
+</form>

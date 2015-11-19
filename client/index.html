@@ -19,12 +19,6 @@
 </head>
 
 <!-- ==================== KeypressEvents Directive ======================= -->
-    <script src="lib/jquery/dist/jquery.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <!-- endbower -->
 
 <body ng-controller="HeaderController" keypress-events>
 
@@ -35,34 +29,6 @@
 
 <div id="HeaderController">
 
-  <!-- ==================== Login Modal HTML ======================= -->
-  <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <form>
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Login</h4>
-          </div>
-          <div class="modal-body">
-              <div class="form-group">
-                <label for="email-input">Email address</label>
-                <input type="email" class="form-control" id="email-input" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label for="password-input">Password</label>
-                <input type="password" class="form-control" id="password-input" placeholder="Password">
-              </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-default">Login</button>
-            <button type="button" class="btn btn-primary">Create Account</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
   <!-- ============  Header  ========================  -->
   <header id="header">
     <nav class="navbar navbar-inverse">
@@ -85,17 +51,11 @@
             <li><a href="#">Shopping Cart</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" data-toggle="modal" data-target="#myLogin">Log in</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Shopping list</a></li>
-                <li><a href="#">Log Out</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
+            
+            <!-- ==================== Login/Logout Directive ======================= -->
+            <li login></li>
+            <li logout></li>
+
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
