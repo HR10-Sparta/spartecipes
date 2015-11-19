@@ -8,7 +8,7 @@
 ====================================*/
 #search {
   display: none;
- position: fixed;
+  position: fixed;
   background-color: rgba(40, 40, 40, 0.7);
   width: 100%;
   height: 100%;
@@ -16,9 +16,13 @@
 
 #searchform {
   margin-top: 200px;
-  width: 700px;
+  width: 800px;
   margin: 0 auto;
   font-size: 3em;
+}
+
+#searchInputArea {
+  display: inline-block;
 }
 
 #label {
@@ -33,6 +37,16 @@
   color: #FFF;
   font-family: inherit;
   font-size: 2em;
+}
+
+#searchtextBS {
+  margin: 0 auto;
+  width: 700px;
+  background: transparent;
+  border: none;
+  /*color: #FFF;*/
+  font-family: inherit;
+  /*font-size: 2em;*/
 }
 
 #searchtext:focus {
@@ -131,6 +145,7 @@
 .ingredients {
   padding-left: 30px;
 }
+<<<<<<< HEAD:client/main.css
 
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
@@ -240,3 +255,5 @@ Toggle Styles */
 
 
 
+=======
+>>>>>>> 24d54f621963e653b6dd44b8bea3017ce04ece31:client/styles/main.css

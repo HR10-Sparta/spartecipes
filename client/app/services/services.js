@@ -1,4 +1,6 @@
-var module = angular.module('recipe.services', [])
+
+angular.module('recipes.services', [])
+
 
 .factory('Search', function($http) {
   var currentRecipe;
@@ -103,4 +105,63 @@ var module = angular.module('recipe.services', [])
     orderIngredients: orderIngredients
   };
 
+})
+.factory('Auth', function ($http, $location, $window) {
+
+  var signin = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/login',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+
+  var signup = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/register',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+
+  var googleAuth = function (user) {
+    return $http({
+      method: 'GET',
+      url: '/auth/google'
+    })
+    .then(function (resp) {
+      console.log(resp);
+    });
+  };
+
+
+
+  var isAuth = function () {
+    return !!$window.localStorage.getItem('spartanShield');
+  };
+
+  var signout = function () {
+    $window.localStorage.removeItem('spartanShield');
+    $location.path('/');
+  };
+
+
+  return {
+    signin: signin,
+    signup: signup,
+    isAuth: isAuth,
+    signout: signout,
+    googleAuth: googleAuth
+  };
+})
+.factory('State', function ($stateProvider, $scope) {
+   $scope.changeState = function (state) {
+    $state.go(state);
+  };
 });

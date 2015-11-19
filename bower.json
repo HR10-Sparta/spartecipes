@@ -1,0 +1,24 @@
+{
+  "name": "spartecipes",
+  "description": "Search for recipes and quickly create a shopping list for all the ingredients you need.",
+  "main": "Gruntfile.js",
+  "authors": [
+    "Alex Zywiak <alex.zywiak@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/HR10-Sparta/spartecipes",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "3.3.0",
+    "angular-bootstrap": "~0.14.3"
+  }
+}

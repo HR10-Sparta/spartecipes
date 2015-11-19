@@ -5,10 +5,15 @@ module.exports = function(grunt) {
     jshint: {
       files: ['Gruntfile.js', 'client/**/*.js', 'server/**/*.js'],
       options: {
-        // Ignore any global vars, jquery etc.
-        globals: {
+        ignores: ['client/lib/**/*']
+      }
+    },
 
-        }
+    // Injects all bower dependencies into index.html
+    // Injects between <!-- bower:css / js --><!-- endbower -->
+    wiredep: {
+      task :{
+        src: ['client/index.html']
       }
     },
 
@@ -22,7 +27,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           // Concat all js files in client
-          'client/dist/scripts/app.js': ['client/**/*.js'],
+          'client/dist/scripts/app.js': ['client/app/**/*.js'],
         }
       }
     },
@@ -39,13 +44,13 @@ module.exports = function(grunt) {
     cssmin: {
       target: {
         files: {
-          'client/dist/styles/style.min.css': ['client/**/*.css']
+          'client/dist/styles/style.min.css': ['client/styles/**/*.css']
         }
       }
     },
 
     watch: {
-      files: ['<%= jshint.files %>'],
+      files: ['<%= jshint.files %>', 'client/**/*.css', '!client/dist/**'],
       tasks: ['build']
     }
   });
@@ -58,12 +63,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-wiredep');
   // Register Grunt Tasks
 
   // Runs jshint, concats and minifies js and css to dist folder. 
   grunt.registerTask('build', [
     'clean',
     'jshint',
+    'wiredep',
     'concat',
     'uglify',
     'cssmin',

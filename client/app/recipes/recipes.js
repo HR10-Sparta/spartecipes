@@ -1,5 +1,6 @@
-angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
+angular.module('recipes.recipes', [])
 
+<<<<<<< HEAD
 .controller('HeaderController', function ($scope, Search, $uibModal, ShoppingList) {
   // Your code here
   $scope.data = {};
@@ -11,11 +12,26 @@ angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
     })
   }
   
+=======
+.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal) {
+  // Your code here
+  $scope.data = {};
+  angular.extend($scope, Search);
+
+  $scope.changeState = function (state) {
+    $state.go(state);
+  };
+
+>>>>>>> 24d54f621963e653b6dd44b8bea3017ce04ece31
   $scope.retrieveRecipes = function (data) {
     Search.getRecipes(data).then(function (recipes) {
       $scope.data.recipes = recipes;
     });
   };
+
+  $rootScope.$on('search', function(e, search){
+    $scope.retrieveRecipes(search);
+  });
 
   $scope.open = function (recipeID) {
     Search.getSingleRecipe(recipeID).then(function (recipe){
@@ -44,9 +60,14 @@ angular.module('recipes', ['recipe.services', 'ui.bootstrap'])
 
   $scope.ok = function () {
     $uibModalInstance.close();
+<<<<<<< HEAD
     ShoppingList.addToList(item, ShoppingList.orderIngredients);
     //$scope.updateList();
     
+=======
+    ShoppingList.addToList(item);
+
+>>>>>>> 24d54f621963e653b6dd44b8bea3017ce04ece31
   };
 
 });

@@ -4,6 +4,7 @@
   "description": "Search for recipes and quickly create a shopping list for all the ingredients you need.",
   "main": "Gruntfile.js",
   "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install",
     "start": "node server/server.js"
   },
   "repository": {
@@ -23,11 +24,13 @@
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-uglify": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-express-server": "^0.5.1"
+    "grunt-express-server": "^0.5.1",
+    "grunt-wiredep": "^2.0.0"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
+    "bower": "^1.6.5",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
