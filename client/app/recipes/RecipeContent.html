@@ -1,5 +1,5 @@
-  
-    <div class="head">  
+
+    <div class="head">
       <h4><strong>{{currentRecipe.Title}}</strong></h4>
       <h5><strong>{{currentRecipe.Category}} - {{currentRecipe.Subcategory}}</strong></h5>
       <h5><strong>Ingredients:</strong></h5>
@@ -9,6 +9,6 @@
     </div>
     <div class="modal-footer">
       <button class="btn btn-default" type="button" ng-click="no()">Go Back</button>
-      <button class="btn btn-primary" type="button" ng-click="ok()">Add Recipe</button>
+      <button ng-show="Auth.isAuth" class="btn btn-primary" type="button" ng-click="ok()">Add Recipe</button>
     </div>
-  
+
