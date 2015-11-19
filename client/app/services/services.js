@@ -43,12 +43,12 @@ angular.module('recipes.services', [])
     if (frac1.length > 2 && frac2.length > 2)
       if(frac1[2] === frac2[2]){
         newTop = Number(frac1[0]) + Number(frac2[0]);
-        return newTop + '/' + frac[2]
+        return newTop + '/' + frac[2];
     }
-  }
+  };
   var addToList = function(recipe, cb){
     list.push(recipe);
-    cb(list)
+    cb(list);
   };
 
   var removeFromList = function(id) {
