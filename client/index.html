@@ -39,6 +39,30 @@
 
 
 <div id="HeaderController">
+  <!-- ====================  Search bar HTML ======================= -->
+  <div id="wrapper">
+ 
+    <div id="sidebar-wrapper">
+      <div class="sidebar">
+        <span class="title"> <strong> Ingredient List</strong> </span>
+        <img id="wrap2" align="middle" src="x.png">
+      </div> 
+        <div class="recipeList"ng-repeat="(key, prop) in ingredientList">{{prop[0]}} {{prop[1]}} {{key}} </div>
+      <div class="recipe"> <hr> <strong> Recipe List </strong> 
+          <div ng-repeat="recipe in list">
+            <div class="recipeName" ng-click="open(recipe.RecipeID)"> {{recipe.Title}} </div>
+            <img class="recipeImage" ng-click="removeFromList(recipe.RecipeID)" align='middle'src="x.png">
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="search">
+    <form ng-model="searchCriteria" id="searchform">
+      <label id="label" for="searchtext">search: </label>
+      <input id="searchtext" name="searchtext" type="text" />
+    </form>
+  </div>
 
   <!-- ====================  Search bar HTML ======================= -->
   <div id="wrapper">
@@ -152,9 +176,9 @@
 </div>
 </div>
 
+
+
 <ui-view></ui-view>
-
-
 
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 

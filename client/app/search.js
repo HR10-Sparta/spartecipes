@@ -12,7 +12,10 @@ $(document).ready(function() {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
   });
-})
+
+});
+
+
 /*============================================
 =            Video Player Section            =
 ============================================*/

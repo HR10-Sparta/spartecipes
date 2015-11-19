@@ -1,6 +1,7 @@
 angular.module('recipes.recipes', [])
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .controller('HeaderController', function ($scope, Search, $uibModal, ShoppingList) {
   // Your code here
   $scope.data = {};
@@ -14,6 +15,10 @@ angular.module('recipes.recipes', [])
   
 =======
 .controller('HeaderController', function ($scope, $rootScope, Search, $uibModal) {
+=======
+.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal, ShoppingList) {
+
+>>>>>>> feat/ViewListAside
   // Your code here
   $scope.data = {};
   angular.extend($scope, Search);
@@ -22,7 +27,18 @@ angular.module('recipes.recipes', [])
     $state.go(state);
   };
 
+<<<<<<< HEAD
 >>>>>>> 24d54f621963e653b6dd44b8bea3017ce04ece31
+=======
+  angular.extend($scope, Search, ShoppingList);
+
+  $scope.updateList = function(){
+    ShoppingList.orderIngredients(function (newList){
+      $scope.data.ingredients = newList;
+    });
+  };
+  
+>>>>>>> feat/ViewListAside
   $scope.retrieveRecipes = function (data) {
     Search.getRecipes(data).then(function (recipes) {
       $scope.data.recipes = recipes;
@@ -60,14 +76,7 @@ angular.module('recipes.recipes', [])
 
   $scope.ok = function () {
     $uibModalInstance.close();
-<<<<<<< HEAD
     ShoppingList.addToList(item, ShoppingList.orderIngredients);
     //$scope.updateList();
-    
-=======
-    ShoppingList.addToList(item);
-
->>>>>>> 24d54f621963e653b6dd44b8bea3017ce04ece31
   };
-
 });
