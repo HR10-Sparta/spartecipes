@@ -1,5 +1,5 @@
-angular.module('recipes')
-  .directive('search', ['$rootScope', function($rootScope) {
+angular.module('recipes.search', [])
+  .directive('search', ['$rootScope', '$state', function($rootScope, $state) {
     return {
       restrict: 'E',
       replace: true,
@@ -20,8 +20,10 @@ angular.module('recipes')
               // On enter
             } else if (keypressEvent.which === 13) {
               $rootScope.$broadcast('search', searchbar.val());
+              $state.go('search');
               searchbar.val('').blur();
               el.fadeOut(200);
+
             } else {
               if(!el.is(':visible')){
                 searchbar.val(String.fromCharCode(keypressEvent.which));

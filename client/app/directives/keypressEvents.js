@@ -1,4 +1,4 @@
-angular.module('recipes')
+angular.module('recipes.keypress', [])
   .directive('keypressEvents', [
     '$document',
     '$rootScope',

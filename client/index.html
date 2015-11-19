@@ -2,23 +2,18 @@
 <html ng-app='recipes'>
 <head>
   <title>Recipes &amp; Shopping List | by Spartecipes</title>
-  
+
   <!-- ==================== App Stylesheets ======================= -->
   <link rel="stylesheet" href="dist/styles/style.min.css">
-  
-  
+
+
   <!-- ==================== Bower CSS Dependencies ======================= -->
   <!-- bower:css -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <!-- endbower -->
-  
+
   <!-- ==================== Bower JS Dependencies ======================= -->
   <!-- bower:js -->
-  <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <!-- endbower -->
 
 </head>
@@ -111,25 +106,15 @@
     </div>
   </header>
 </div>
+<!-- ====================  ui-view  ========================  -->
 <div class="jumbotron">
-  <div class="container content-one">  
-    <div class="row">
-      <div class="list col-md-6" ng-repeat="recipe in data.recipes | orderBy: '-StarRating' | limitTo:30">
-        <div ng-click="open(recipe.RecipeID)" class="picture" style="background-image: linear-gradient(
-                                    rgba(0, 0, 0, 0.5),
-                                    rgba(0, 0, 0, 0.5)
-                                    ),  url({{recipe.ImageURL}});">
-          <h4 class="text">{{recipe.Title}}</h4>
-        </div>
-      </div>
-    </div>
-</div>
+  <div class="container">
+    <div ui-view></div>
+  </div>
 </div>
 
-<ui-view></ui-view>
-
-  <script type="text/ng-template" id="RecipeContent.html">
-    <div class="head">  
+ <!--<script type="text/ng-template" id="RecipeContent.html">
+    <div class="head">
       <h4><strong>{{currentRecipe.Title}}</strong></h4>
       <h5><strong>{{currentRecipe.Category}} - {{currentRecipe.Subcategory}}</strong></h5>
       <h5><strong>Ingredients:</strong></h5>
@@ -141,11 +126,11 @@
       <button class="btn btn-default" type="button" ng-click="no()">Go Back</button>
       <button class="btn btn-primary" type="button" ng-click="ok()">Add Recipe</button>
     </div>
-  </script>
-
+  </script>-->
+  <div class="navbar navbar-fixed-bottom"></div>
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
-  
+
   <!-- ==================== App JS Files ======================= -->
   <script src="dist/scripts/app.js"></script>
 
