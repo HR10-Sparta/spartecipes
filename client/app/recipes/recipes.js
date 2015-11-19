@@ -4,14 +4,12 @@ angular.module('recipes.recipes', [])
 
   // Your code here
   $scope.data = {};
-<<<<<<< 24d54f621963e653b6dd44b8bea3017ce04ece31
   angular.extend($scope, Search);
 
   $scope.changeState = function (state) {
     $state.go(state);
   };
 
-=======
   angular.extend($scope, Search, ShoppingList);
 
   $scope.updateList = function(){
@@ -20,7 +18,6 @@ angular.module('recipes.recipes', [])
     });
   };
   
->>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
   $scope.retrieveRecipes = function (data) {
     Search.getRecipes(data).then(function (recipes) {
       $scope.data.recipes = recipes;
@@ -58,14 +55,8 @@ angular.module('recipes.recipes', [])
 
   $scope.ok = function () {
     $uibModalInstance.close();
-<<<<<<< 24d54f621963e653b6dd44b8bea3017ce04ece31
-    ShoppingList.addToList(item);
-
-=======
     ShoppingList.addToList(item, ShoppingList.orderIngredients);
     //$scope.updateList();
-    
->>>>>>> (feat)Added sidebar for viewing ingredients and recipe list
-  };
+   };
 
 });
