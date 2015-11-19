@@ -3,15 +3,17 @@
 <head>
   <title>Recipes &amp; Shopping List | by Spartecipes</title>
   
-  <!-- Link to CSS File -->
+  <!-- ==================== App Stylesheets ======================= -->
   <link rel="stylesheet" href="dist/styles/style.min.css">
-  <!-- Latest compiled and minified CSS & JS for Bootstrap and JS -->
-
+  
+  
+  <!-- ==================== Bower CSS Dependencies ======================= -->
   <!-- bower:css -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <!-- endbower -->
-
-    <!-- bower:js -->
+  
+  <!-- ==================== Bower JS Dependencies ======================= -->
+  <!-- bower:js -->
   <script src="lib/jquery/dist/jquery.js"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
@@ -20,16 +22,18 @@
   <!-- endbower -->
 
 </head>
+
+<!-- ==================== KeypressEvents Directive ======================= -->
+
 <body ng-controller="HeaderController" keypress-events>
+
+<!-- ==================== Search Modal Directive ======================= -->
+
 <search></search>
+
+
 <div id="HeaderController">
-  <!-- ====================  Search bar HTML ======================= -->
-  <div id="search">
-    <form ng-model="searchCriteria" id="searchform">
-      <label id="label" for="searchtext">search: </label>
-      <input id="searchtext" name="searchtext" type="text" />
-    </form>
-  </div>
+
   <!-- ==================== Login Modal HTML ======================= -->
   <div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -116,9 +120,8 @@
 </div>
 </div>
 
-
-
 <ui-view></ui-view>
+
   <script type="text/ng-template" id="RecipeContent.html">
     <div class="head">  
       <h4><strong>{{currentRecipe.Title}}</strong></h4>
@@ -136,7 +139,8 @@
 
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
-
+  
+  <!-- ==================== App JS Files ======================= -->
   <script src="dist/scripts/app.js"></script>
 
 
