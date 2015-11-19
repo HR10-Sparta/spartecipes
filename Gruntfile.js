@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     },
 
     // Remove all files from the dist folder
-    clean: ['dist/**/*'],
+    clean: ['client/dist/**/*'],
 
     concat: {
       options: {
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           // Concat all js files in client
-          'dist/scripts/app.js': ['client/**/*.js'],
+          'client/dist/scripts/app.js': ['client/**/*.js'],
         }
       }
     },
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           // Minify concatenated files
-          'dist/scripts/app.min.js': ['dist/scripts/app.js'],
+          'clien/dist/scripts/app.min.js': ['dist/scripts/app.js'],
         }
       }
     },
@@ -39,14 +39,14 @@ module.exports = function(grunt) {
     cssmin: {
       target: {
         files: {
-          'dist/styles/style.min.css': ['client/**/*.css']
+          'client/dist/styles/style.min.css': ['client/**/*.css']
         }
       }
     },
 
     watch: {
       files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      tasks: ['build']
     }
   });
 
@@ -62,8 +62,8 @@ module.exports = function(grunt) {
 
   // Runs jshint, concats and minifies js and css to dist folder. 
   grunt.registerTask('build', [
-    'jshint',
     'clean',
+    'jshint',
     'concat',
     'uglify',
     'cssmin',
