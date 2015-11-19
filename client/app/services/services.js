@@ -1,6 +1,7 @@
 
 angular.module('recipes.services', [])
 
+
 .factory('Search', function($http) {
   var currentRecipe;
   // function will retreive recipes based off the search criteria
