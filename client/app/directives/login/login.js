@@ -2,7 +2,7 @@ angular.module('recipes')
   .directive('login', [function() {
     return {
       restrict: 'EA',
-      template: '<a href="#" ng-click="open()">Login</a>',
+      template: '<a href="#" ng-click="openLogin()">Login</a>',
       controller: 'LoginDirectiveCtrl'
     };
   }])
@@ -15,7 +15,7 @@ angular.module('recipes')
   }])
   .controller('LoginDirectiveCtrl', ['$scope', '$rootScope', '$uibModal', 'Auth', function($scope, $rootScope, $uibModal, Auth) {
 
-    $scope.open = function() {
+    $scope.openLogin = function() {
       $rootScope.search = false;
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
