@@ -145,10 +145,6 @@
 .ingredients {
   padding-left: 30px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD:client/main.css
-=======
->>>>>>> feat/ViewListAside
 
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
@@ -184,11 +180,7 @@ Toggle Styles */
   height: 100%;
   margin-left: -350px;
   overflow-y: auto;
-<<<<<<< HEAD
-  background-image: url("grey-background.jpg");
-=======
   background-image: url("../../grey-background.jpg");
->>>>>>> feat/ViewListAside
   -webkit-transition: all 0.5s ease;
 
  -moz-transition: all 0.5s ease;
@@ -258,12 +250,3 @@ Toggle Styles */
 }
 
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 24d54f621963e653b6dd44b8bea3017ce04ece31:client/styles/main.css
-=======
->>>>>>> feat/ViewListAside

@@ -7,14 +7,11 @@ angular.module('recipes.recipes', [])
 
   // Your code here
   $scope.data = {};
-  angular.extend($scope, Search);
+  angular.extend($scope, Search, ShoppingList);
 
   $scope.changeState = function (state) {
     $state.go(state);
   };
-
-
-  angular.extend($scope, Search, ShoppingList);
 
   $scope.updateList = function(){
     ShoppingList.orderIngredients(function (newList){
