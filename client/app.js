@@ -6,40 +6,62 @@ angular.module('recipes', [
   'ngRoute',
   'ui.bootstrap'
 ])
-.config(function($routeProvider,  $httpProvider, $locationProvider) {
-  $routeProvider
-    .when('/login', {
-      templateUrl: 'app/login/login.html',
-      controller: 'LoginController'
+.config(function($routeProvider,  $httpProvider, $locationProvider, $stateProvider) {
+  $stateProvider
+    .state('welcome', {
+      url: '/',
+      // ...
+      data: {
+        requireLogin: false
+      }
     })
-    .when('/signup', {
-      templateUrl: 'app/signup/signup.html',
-      controller: 'SignupController'
+    .state('app', {
+      abstract: true,
+      // ...
+      data: {
+        requireLogin: true // this property will apply to all children of 'app'
+      }
     })
-    .when('/recipes/:recipes', {
-      // will use $routeParameter.recipes for look up
-      templateUrl: 'app/recipes/recipes.html',
-      controller: 'RecipesController',
-      authenticate: true
+    .state('app.dashboard', {
+      // child state of `app`
+      // requireLogin === true
     })
-    .when('/list', {
-      templateUrl: 'app/list/list.html',
-      controller: 'ListController',
-      authenticate: true
-    })
-    .when('/myrecipes', {
-      templateUrl: 'app/myrecipes/myrecipes.html',
-      controller: 'MyrecipesController',
-      authenticate: true
-    })
-    .otherwise({
-      redirectTo: '/'
-    });
-    // $httpProvider.interceptors.push('AttachTokens');
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-  });
+
+
+// .config(function($routeProvider,  $httpProvider, $locationProvider) {
+//   $routeProvider
+//     .when('/login', {
+//       templateUrl: 'app/login/login.html',
+//       controller: 'LoginController'
+//     })
+//     .when('/signup', {
+//       templateUrl: 'app/signup/signup.html',
+//       controller: 'SignupController'
+//     })
+//     .when('/recipes/:recipes', {
+//       // will use $routeParameter.recipes for look up
+//       templateUrl: 'app/recipes/recipes.html',
+//       controller: 'RecipesController',
+//       authenticate: true
+//     })
+//     .when('/list', {
+//       templateUrl: 'app/list/list.html',
+//       controller: 'ListController',
+//       authenticate: true
+//     })
+//     .when('/myrecipes', {
+//       templateUrl: 'app/myrecipes/myrecipes.html',
+//       controller: 'MyrecipesController',
+//       authenticate: true
+//     })
+//     .otherwise({
+//       redirectTo: '/'
+//     });
+//     // $httpProvider.interceptors.push('AttachTokens');
+//     $locationProvider.html5Mode({
+//       enabled: true,
+//       requireBase: false
+//   });
 });
 
 // we will use this when we implement jwt
