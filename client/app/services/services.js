@@ -105,4 +105,4 @@ angular.module('recipes.services', [])
    $scope.changeState = function (state) {
     $state.go(state);
   };
-})
+});
