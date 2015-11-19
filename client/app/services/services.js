@@ -35,9 +35,6 @@ var module = angular.module('recipe.services', [])
   var list = [];
   var ingredientList = {};
 
-<<<<<<< HEAD
-  var addToList = function(recipe) {
-=======
   var addFrac = function(frac1, frac2){
     console.log(Number(frac1));
     console.log(Number(frac1) + Number(frac2));
@@ -48,7 +45,6 @@ var module = angular.module('recipe.services', [])
     }
   }
   var addToList = function(recipe, cb){
->>>>>>> feat/ViewListAside
     list.push(recipe);
     cb(list)
   };
