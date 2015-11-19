@@ -33,7 +33,7 @@ angular.module('recipes.services', [])
 
 })
 
-.factory('ShoppingList', function() {
+.factory('ShoppingList', function(Auth) {
   var list = [];
   var ingredientList = {};
 
@@ -47,8 +47,12 @@ angular.module('recipes.services', [])
     }
   };
   var addToList = function(recipe, cb){
-    list.push(recipe);
-    cb(list);
+    if (Auth.isAuth) {
+      list.push(recipe);
+      cb(list);
+    } else {
+      console.error("You must be logged in to do that");
+    }
   };
 
   var removeFromList = function(id) {
@@ -72,10 +76,10 @@ angular.module('recipes.services', [])
     return false;
   };
 
-  var orderIngredients = function(list){ 
+  var orderIngredients = function(list){
     for (var key in ingredientList){
       delete ingredientList[key];
-    } 
+    }
 
     for (var i = 0; i < list.length; i++){
       var temp = list[i].Ingredients;
@@ -84,12 +88,12 @@ angular.module('recipes.services', [])
           ingredientList[temp[x].Name] = [temp[x].DisplayQuantity, temp[x].Unit];
         }
         else {
-          if (ingredientList[temp[x].Name][0][1] === "/") { 
+          if (ingredientList[temp[x].Name][0][1] === "/") {
             ingredientList[temp[x].Name][0] = addFrac(ingredientList[temp[x].Name][0], temp[x].DisplayQuantity);
           } else if (temp[x].DisplayQuantity[1] === "/") {
-            ingredientList[temp[x].Name][0] = addFrac(temp[x].DisplayQuantity, ingredientList[temp[x].Name][0]);  
+            ingredientList[temp[x].Name][0] = addFrac(temp[x].DisplayQuantity, ingredientList[temp[x].Name][0]);
           } else {
-            ingredientList[temp[x].Name][0] = Number(ingredientList[temp[x].Name][0]) + Number(temp[x].DisplayQuantity);   
+            ingredientList[temp[x].Name][0] = Number(ingredientList[temp[x].Name][0]) + Number(temp[x].DisplayQuantity);
           }
         }
       }
