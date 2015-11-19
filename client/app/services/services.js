@@ -108,25 +108,27 @@ angular.module('recipes.services', [])
 })
 .factory('Auth', function ($http, $location, $window) {
 
-  var signin = function (user) {
+  var login = function (user) {
+    console.log(user);
     return $http({
       method: 'POST',
-      url: '/login',
+      url: '/api/users/login',
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return resp;
     });
   };
 
   var signup = function (user) {
+    console.log(user);
     return $http({
       method: 'POST',
-      url: '/register',
+      url: '/api/users/register',
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return resp;
     });
   };
 
@@ -140,23 +142,20 @@ angular.module('recipes.services', [])
     });
   };
 
-
-
   var isAuth = function () {
     return !!$window.localStorage.getItem('spartanShield');
   };
 
-  var signout = function () {
+  var logout = function () {
     $window.localStorage.removeItem('spartanShield');
     $location.path('/');
   };
 
-
   return {
-    signin: signin,
+    login: login,
     signup: signup,
     isAuth: isAuth,
-    signout: signout,
+    logout: logout,
     googleAuth: googleAuth
   };
 })
