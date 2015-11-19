@@ -1,70 +1,66 @@
 
 angular.module('recipes', [
-  // 'recipes.services',
-  // 'recipes.links',
-  // 'recipes.search',
-  // 'recipes.login',
-  // 'recipes.signup',
+  'recipes.services',
   'ui.router',
   'ui.bootstrap'
 ])
-.config(function($routeProvider,  $httpProvider, $locationProvider, $stateProvider) {
+.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
-  $stateProvider
-    .state('welcome', {
-      url: '/',
-      template: 'app/search/search.html',
-      controller: 'SearchController',
-      data: {
+  //$stateProvider
+    // .state('welcome', {
+    //   url: '/',
+    //   template: 'app/search/search.html',
+    //   controller: 'SearchController',
+    //   data: {
+    //     requireLogin: false
+    //   }
+    // })
+    // .state('recipes', {
+    //   url: '/recipes',
+    //   template: 'app/recipes/recipes.html'
+    // })
         requireLogin: false
       }
     })
-    .state('recipes', {
-      url: '/recipes',
-      template: 'app/recipes/recipes.html'
-      data: {
-        requireLogin: false
-      }
-    })
-    .state('recipes.details', {
+    // .state('recipes.details', {
       url: '/recipes/:recipe',
       template: 'app/views/partial_recipe-detail.html',
-      data: {
-        requireLogin: false
-      }
-    })
-    .state('login', {
-      url: '/login',
-      template: 'app/login/login.html',
-      controller: 'LoginController',
-      data: {
-        requireLogin: false
-      }
-      // child state of `app`
-      // requireLogin === true
-    })
-    .state('signup', {
-      url: '/signup',
-      template: 'app/signup/signup.html',
-      controller: 'SignupController',
-      data: {
-        requireLogin: false
-      }
-      // child state of `app`
-      // requireLogin === true
-    })
-    .state('list', {
-      url: '/list',
-      template: '/shoppinglist/shoppinglist.html',
-      controller: 'ShoppinglistController',
-      data: {
-        requireLogin: true
-      }
-    })
-    .state('logout', {
-      url: '/logout',
-      controller: 'LoginController'
-    });
+    //   data: {
+    //     requireLogin: false
+    //   }
+    // })
+    // .state('login', {
+    //   url: '/login',
+    //   template: 'app/login/login.html',
+    //   controller: 'LoginController',
+    //   data: {
+    //     requireLogin: false
+    //   }
+    //   // child state of `app`
+    //   // requireLogin === true
+    // })
+    // .state('signup', {
+    //   url: '/signup',
+    //   template: 'app/signup/signup.html',
+    //   controller: 'SignupController',
+    //   data: {
+    //     requireLogin: false
+    //   }
+    //   // child state of `app`
+    //   // requireLogin === true
+    // })
+    // .state('list', {
+    //   url: '/list',
+    //   template: '/shoppinglist/shoppinglist.html',
+    //   controller: 'ShoppinglistController',
+    //   data: {
+    //     requireLogin: true
+    //   }
+    // })
+    // .state('logout', {
+    //   url: '/logout',
+    //   controller: 'LoginController'
+    // });
 })
 
 // we will use this when we implement jwt
