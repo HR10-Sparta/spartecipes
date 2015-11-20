@@ -60,7 +60,7 @@ img.mylogo {
 #search {
   display: none;
   position: fixed;
-  background-color: rgba(120, 40, 40, 0.95);
+  background-color: rgba(120, 40, 40, 0.8);
   width: 100%;
   height: 600px;
   z-index: -1;
@@ -87,7 +87,7 @@ img.mylogo {
   margin-top: 20px;
   padding: 3px;
   width: 800px;
-  background-color: rgba(120, 40, 40, 1);;
+  background-color: rgba(120, 40, 40, .9);;
   /*background: transparent;*/
   border: none;
   color: #FFF;
@@ -177,8 +177,8 @@ img.mylogo {
 .picture {
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 250px;
-  width: 400px;
+  height: 210px;
+  width: 340px;
   padding: 15px 15px 0;
   background-color: white;
   box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
@@ -189,13 +189,13 @@ img.mylogo {
 .picture:hover {
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 250px;
-  width: 400px;
+  height: 210px;
+  width: 340px;
   padding: 15px 15px 0;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.05);
-  -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.05);
-  -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.05);
+  background-color: black;
+  /*box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.4);
+  -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);*/
 }
 
 
@@ -325,8 +325,8 @@ Toggle Styles */
 
 @keyframes onEnter {
   0% {height: 0px; font-size: 36px; opacity: 1;}
-  50% { font-size: 48px; opacity: 0.9;}
-  100% {height: 350px; font-size: 36px; opacity: 0;}
+  75% {  opacity: 0.9;}
+  100% {height: 400px; font-size: 72px; opacity: 0;}
 }
 
 .header-contain {
