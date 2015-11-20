@@ -35,7 +35,7 @@ $(document).ready(function() {
       autoplay: 1,
       controls: 0,
       enablejsapi: 1,
-      end: 84,
+      end: 1,
       start: 5,
       fs: 0,
       loop: 1,
@@ -44,7 +44,7 @@ $(document).ready(function() {
       rel: 0,
       showinfo: 0,
       events: {
-        'onReady' : function (e) {e.target.playVideo(); e.target.setVolume(0); e.target.setPlaybackQuality(small); },
+        'onReady' : function (e) {e.target.playVideo(); e.target.setVolume(0); e.target.setPlaybackQuality(hd720); },
         'onStateChange' : function (e) {e.target.playVideo(); }
       }
     });
