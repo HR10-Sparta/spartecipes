@@ -1,9 +1,9 @@
 angular.module('recipes.recipes', [])
 
-  
 
 
-.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal, ShoppingList) {
+
+.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal, ShoppingList, Auth) {
 
   // Your code here
   $scope.data = {};
@@ -13,12 +13,16 @@ angular.module('recipes.recipes', [])
     $state.go(state);
   };
 
+  $scope.isAuth = function () {
+    return Auth.isAuth();
+  };
+
   $scope.updateList = function(){
     ShoppingList.orderIngredients(function (newList){
       $scope.data.ingredients = newList;
     });
   };
-  
+
   $scope.retrieveRecipes = function (data) {
     console.log("getting called");
     Search.getRecipes(data).then(function (recipes) {

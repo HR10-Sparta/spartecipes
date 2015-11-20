@@ -14,6 +14,11 @@
 
   <!-- ==================== Bower JS Dependencies ======================= -->
   <!-- bower:js -->
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <!-- endbower -->
   <base href="/">
 </head>
@@ -27,7 +32,7 @@
     <!-- endbower -->
 
 <body ng-controller="HeaderController" keypress-events>
-
+<search></search>
 <!-- ==================== Search Modal Directive ======================= -->
 
 <search></search>
@@ -36,14 +41,20 @@
 <div id="HeaderController">
   <!-- ====================  Search bar HTML ======================= -->
   <div id="wrapper">
- 
+
     <div id="sidebar-wrapper">
       <div class="sidebar">
         <span class="title"> <strong> Ingredient List</strong> </span>
         <img id="wrap2" align="middle" src="x.png">
+<<<<<<< HEAD
       </div> 
         <div class="recipeList"ng-repeat="(key, prop) in displayList">{{prop[0]}} {{prop[1]}} {{key}} </div>
       <div class="recipe"> <hr> <strong> Recipe List </strong> 
+=======
+      </div>
+        <div class="recipeList"ng-repeat="(key, prop) in ingredientList">{{prop[0]}} {{prop[1]}} {{key}} </div>
+      <div class="recipe"> <hr> <strong> Recipe List </strong>
+>>>>>>> c2106ee8588cbba71192453d6af25978483181a9
           <div ng-repeat="recipe in list">
             <div class="recipeName" ng-click="open(recipe.RecipeID)"> {{recipe.Title}} </div>
             <img class="recipeImage" ng-click="removeFromList(recipe.RecipeID)" align='middle'src="x.png">
@@ -99,20 +110,14 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Recipes<span class="sr-only">(current)</span></a></li>
-            <li id="menu-toggle"><a href="#">Shopping Cart</a></li>
+            <li ng-hide="isAuth" id="menu-toggle"><a href="#">Shopping Cart</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" data-toggle="modal" data-target="#myLogin">Log in</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Shopping list</a></li>
-                <li><a href="#">Log Out</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
+
+            <!-- ==================== Login/Logout Directive ======================= -->
+            <li ng-hide="!isAuth" login></li>
+            <li ng-show="!isAuth" logout></li>
+
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -126,7 +131,9 @@
 <!-- ====================  ui-view  ========================  -->
 <div class="jumbotron">
   <div class="container">
-    <div ui-view></div>
+    <div class="ui-view-container">
+      <div ui-view></div>
+    </div>
   </div>
 </div>
 
