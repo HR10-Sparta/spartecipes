@@ -1,5 +1,13 @@
 
 /*====================================
+=            Navigation      =
+====================================*/
+
+img.mylogo {
+  margin-top: -8px;
+  height: 40px;
+}
+/*====================================
 =            ui-view Animation       =
 ====================================*/
 
@@ -52,7 +60,7 @@
 #search {
   display: none;
   position: fixed;
-  background-color: rgba(40, 40, 40, 0.7);
+  background-color: rgba(120, 40, 40, 0.95);
   width: 100%;
   height: 600px;
   z-index: -1;
@@ -70,13 +78,17 @@
 }
 
 #label {
+  margin-top: 100px;
   color: white;
 }
 
 #searchtext {
   margin: 0 auto;
-  width: 700px;
-  background: transparent;
+  margin-top: 20px;
+  padding: 3px;
+  width: 800px;
+  background-color: rgba(120, 40, 40, 1);;
+  /*background: transparent;*/
   border: none;
   color: #FFF;
   font-family: inherit;
@@ -312,8 +324,9 @@ Toggle Styles */
 ========================================*/
 
 @keyframes onEnter {
-  from {height: 0px;}
-  to {height: 350px;}
+  0% {height: 0px; font-size: 36px; opacity: 1;}
+  50% { font-size: 48px; opacity: 0.9;}
+  100% {height: 350px; font-size: 36px; opacity: 0;}
 }
 
 .header-contain {
@@ -324,15 +337,19 @@ Toggle Styles */
  -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
  animation-fill-mode: forwards;
   animation-timing-function: ease-out;
+  animation-delay: 1.5s;
   animation-duration: 1s;
-  animation-delay: 1s;
   animation-iteration-count: 1;
   /*height: 350px;*/
+  z-index: -2;
 }
 
-.header-contain > h1 {
-  color: #453400;
-  z-index: -2;
+.type {
+  text-align: right;
+  vertical-align: bottom;
+  font-size: 18px;
+  color: #ddd;
+  margin-right: 14px;
 }
 
 .glyph {
