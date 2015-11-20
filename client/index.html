@@ -46,15 +46,9 @@
       <div class="sidebar">
         <span class="title"> <strong> Ingredient List</strong> </span>
         <img id="wrap2" align="middle" src="x.png">
-<<<<<<< HEAD
       </div> 
         <div class="recipeList"ng-repeat="(key, prop) in displayList">{{prop[0]}} {{prop[1]}} {{key}} </div>
       <div class="recipe"> <hr> <strong> Recipe List </strong> 
-=======
-      </div>
-        <div class="recipeList"ng-repeat="(key, prop) in ingredientList">{{prop[0]}} {{prop[1]}} {{key}} </div>
-      <div class="recipe"> <hr> <strong> Recipe List </strong>
->>>>>>> c2106ee8588cbba71192453d6af25978483181a9
           <div ng-repeat="recipe in list">
             <div class="recipeName" ng-click="open(recipe.RecipeID)"> {{recipe.Title}} </div>
             <img class="recipeImage" ng-click="removeFromList(recipe.RecipeID)" align='middle'src="x.png">
