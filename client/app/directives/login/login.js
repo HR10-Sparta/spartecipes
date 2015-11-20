@@ -26,6 +26,7 @@ angular.module('recipes')
 
     $scope.logout = function() {
       Auth.logout();
+      $rootScope.$broadcast('userAction');
     };
 
   }])
@@ -43,6 +44,7 @@ angular.module('recipes')
         .then(function(resp) {
           if (resp.data.token) {
             $window.localStorage.setItem('spartanShield', resp.data.token);
+            $rootScope.$broadcast('userAction');
             $scope.close();
           } else {
             if (resp.data.err) {
@@ -57,6 +59,7 @@ angular.module('recipes')
         .then(function(resp) {
           if (resp.data.token) {
             $window.localStorage.setItem('spartanShield', resp.data.token);
+            $rootScope.$broadcast('userAction');
             $scope.close();
           } else {
             if (resp.data.err) {

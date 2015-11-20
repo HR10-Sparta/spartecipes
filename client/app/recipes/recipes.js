@@ -3,64 +3,70 @@ angular.module('recipes.recipes', [])
 
 
 
-.controller('HeaderController', function ($scope, $rootScope, Search, $uibModal, ShoppingList, Auth) {
+.controller('HeaderController', function($scope, $rootScope, Search, $uibModal, ShoppingList, Auth) {
 
   // Your code here
   $scope.data = {};
+  $scope.isAuth = Auth.isAuth();
   angular.extend($scope, Search, ShoppingList);
 
-  $scope.changeState = function (state) {
+  $scope.changeState = function(state) {
     $state.go(state);
   };
 
-  $scope.isAuth = function () {
-    return Auth.isAuth();
-  };
+  $scope.$on('userAction', function() {
+    $scope.isAuth = Auth.isAuth();
+  });
 
-  $scope.updateList = function(){
-    ShoppingList.orderIngredients(function (newList){
+  $scope.updateList = function() {
+    ShoppingList.orderIngredients(function(newList) {
       $scope.data.ingredients = newList;
     });
   };
 
-  $scope.retrieveRecipes = function (data) {
+  $scope.retrieveRecipes = function(data) {
     console.log("getting called");
-    Search.getRecipes(data).then(function (recipes) {
+    Search.getRecipes(data).then(function(recipes) {
       $scope.data.recipes = recipes;
     });
   };
 
-  $rootScope.$on('search', function(e, search){
+  $rootScope.$on('search', function(e, search) {
     $scope.retrieveRecipes(search);
   });
 
-  $scope.open = function (recipeID) {
-    Search.getSingleRecipe(recipeID).then(function (recipe){
+  $scope.open = function(recipeID) {
+    Search.getSingleRecipe(recipeID).then(function(recipe) {
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'app/recipes/RecipeContent.html',
         controller: 'RecipeInstanceCtrl',
         resolve: {
-          item: function () {
+          item: function() {
             return recipe;
           }
         }
       });
-     });
+    });
   };
 })
 
-.controller('RecipeInstanceCtrl', function ($scope, $uibModalInstance, Search, item, ShoppingList) {
+.controller('RecipeInstanceCtrl', function($scope, $uibModalInstance, Auth, Search, item, ShoppingList) {
 
-   angular.extend($scope, Search);
-   $scope.currentRecipe = item;
-   console.log($scope.currentRecipe);
+  angular.extend($scope, Search);
+  $scope.currentRecipe = item;
+  $scope.isAuth = Auth.isAuth();
+  console.log($scope.currentRecipe);
 
-   $scope.no = function(){
-     $uibModalInstance.close();
-   };
+  $scope.$on('userAction', function() {
+    $scope.isAuth = Auth.isAuth();
+  });
 
-  $scope.ok = function () {
+  $scope.no = function() {
+    $uibModalInstance.close();
+  };
+
+  $scope.ok = function() {
     $uibModalInstance.close();
     ShoppingList.addToList(item, ShoppingList.orderIngredients);
     //$scope.updateList();
