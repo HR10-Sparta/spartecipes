@@ -132,14 +132,6 @@
   }
 }
 
-.header-container {
-  height: 450px;
-  text-align: center;
-}
-
-.header-container > h1 {
-  font-color: #FFFFFF;
-}
 
 /*======================================
 =            Content Area 1            =
@@ -315,3 +307,35 @@ Toggle Styles */
 }
 
 
+/*========================================
+=            Header Container            =
+========================================*/
+
+@keyframes onEnter {
+  from {height: 0px;}
+  to {height: 350px;}
+}
+
+.header-contain {
+  color: #EEEEEE;
+  text-align: center;
+/*  height: 0px;
+*/  animation-name: onEnter;
+ -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+ animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  /*height: 350px;*/
+}
+
+.header-contain > h1 {
+  color: #453400;
+  z-index: -2;
+}
+
+.glyph {
+  size: 72px;
+  text-align: center;
+}
