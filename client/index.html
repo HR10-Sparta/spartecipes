@@ -14,11 +14,6 @@
 
   <!-- ==================== Bower JS Dependencies ======================= -->
   <!-- bower:js -->
-  <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <!-- endbower -->
   <base href="/">
 </head>
@@ -34,9 +29,6 @@
 <body ng-controller="HeaderController" keypress-events>
 <search></search>
 <!-- ==================== Search Modal Directive ======================= -->
-
-<search></search>
-
 
 <div id="HeaderController">
   <!-- ====================  Search bar HTML ======================= -->
@@ -104,13 +96,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Recipes<span class="sr-only">(current)</span></a></li>
-            <li ng-hide="isAuth" id="menu-toggle"><a href="#">Shopping Cart</a></li>
+            <li ng-show="isAuth" id="menu-toggle"><a href="#">Shopping Cart</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-
             <!-- ==================== Login/Logout Directive ======================= -->
-            <li ng-hide="!isAuth" login></li>
-            <li ng-show="!isAuth" logout></li>
+            <li ng-hide="isAuth" login></li>
+            <li ng-show="isAuth" logout></li>
 
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -156,4 +147,3 @@
 
 </body>
 </html>
-
