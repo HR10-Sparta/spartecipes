@@ -2,6 +2,8 @@
 
 > Spartecipes is a beautiful recipe search engine with integrated shopping list and various cooking utilities.
 
+[Check out the Deployed App](http://spartecipes-revisited.herokuapp.com)
+
 ## Team
 
   - __Product Owner__: Nissa Wollum
